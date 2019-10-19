@@ -216,16 +216,15 @@
           <h1 id="Image-formation"><a href="#Image-formation" class="headerlink" title="Image formation"></a>Image formation</h1><h2 id="Geometry"><a href="#Geometry" class="headerlink" title="Geometry"></a>Geometry</h2><h3 id="Pinhole-camera-model"><a href="#Pinhole-camera-model" class="headerlink" title="Pinhole camera model"></a>Pinhole camera model</h3><p>Abstract camera model - box with a small hole</p>
 <p>Pinhole cameras work in practice, ignoring diffraction (衍射)</p>
 <p>Using lens to get more lights than pinhole</p>
-<p><img src="media%5C1.PNG" alt=""><br>$$\frac{1}{z} - \frac{1}{Z} = \frac{1}{f}$$<br>Points at different depth focus at different positions of the image plane</p>
+<p><img src="media\1.PNG" alt=""></p>
+<script type="math/tex; mode=display">\frac{1}{z} - \frac{1}{Z} = \frac{1}{f}</script><p>Points at different depth focus at different positions of the image plane</p>
 <ul>
 <li><p>With a fixed image plane, not all points will be in focus</p>
 </li>
 <li><p><strong>Depth of Field (DOF)</strong>,  <em>i.e.</em> distance over which focus is “acceptable” depends on the <em>aperture</em> (小孔) size </p>
 </li>
-<li><p>Larger aperture captures more light but has lower DOF</p>
-</li>
-<li><p>Defocus property can be used to infer depth</p>
-<ul>
+<li>Larger aperture captures more light but has lower DOF</li>
+<li>Defocus property can be used to infer depth<ul>
 <li>Limited accuracy</li>
 </ul>
 </li>
@@ -236,21 +235,112 @@
 <li>Geometric distortions</li>
 <li>Diffraction effects</li>
 </ul>
-<h4 id="Equation-of-projection"><a href="#Equation-of-projection" class="headerlink" title="Equation of projection"></a>Equation of projection</h4><p><img src="media%5C2.PNG" alt=""><br>$$<br>P=(X,Y,Z), p=(x,y,z) \<br>z = d \<br>Op = \lambda*OP \<br>\therefore \lambda = \frac{d}{Z} \<br>\left{<br>\begin{aligned}<br>x=d\frac{X}{Z} \<br>y=d\frac{Y}{Z}<br>\end{aligned}<br>\right.<br>$$</p>
-<ul>
+<h4 id="Equation-of-projection"><a href="#Equation-of-projection" class="headerlink" title="Equation of projection"></a>Equation of projection</h4><p><img src="media\2.PNG" alt=""></p>
+<script type="math/tex; mode=display">
+P=(X,Y,Z), p=(x,y,z) \\
+z = d \\
+Op = \lambda*OP \\
+\therefore \lambda = \frac{d}{Z} \\
+\left\{
+\begin{aligned}
+x=d\frac{X}{Z} \\
+y=d\frac{Y}{Z}
+\end{aligned}
+\right.</script><ul>
 <li>If X is a positive number, x will be negative since Z is negative.</li>
 <li>If image plane is in front (virtual plane), image is not inverted; changed signs of x and y.</li>
 </ul>
-<h4 id="Back-projection"><a href="#Back-projection" class="headerlink" title="Back projection"></a>Back projection</h4><h3 id="Homogeneous-coordinates"><a href="#Homogeneous-coordinates" class="headerlink" title="Homogeneous coordinates"></a>Homogeneous coordinates</h3><p>$$<br>\left[<br> \begin{matrix}<br>   x_h \<br>   y_h \<br>   w_h<br>  \end{matrix}<br>\right]=<br>\left[<br> \begin{matrix}<br>   1 &amp; 0 &amp; 0 &amp; 0 \<br>   0 &amp; 1 &amp; 0 &amp; 0 \<br>   0 &amp; 0 &amp; \frac{1}{d} &amp; 0<br>  \end{matrix}<br>\right]<br>\left[<br> \begin{matrix}<br>   X_h \<br>   Y_h \<br>   Z_h \<br>   W_h<br>  \end{matrix}<br>\right]<br>$$</p>
-<h3 id="Coordinate-transformations"><a href="#Coordinate-transformations" class="headerlink" title="Coordinate transformations"></a>Coordinate transformations</h3><h4 id="Normalized-Coordinates"><a href="#Normalized-Coordinates" class="headerlink" title="Normalized Coordinates"></a>Normalized Coordinates</h4><p><img src="media%5C3.png" alt=""></p>
-<p>projection to normalized coord:<br>$$<br>\left{<br>\begin{aligned}<br>\hat{x}=\frac{X}{Z} \<br>\hat{y}=\frac{Y}{Z}<br>\end{aligned}<br>\right. \lrarr \hat{p} = \frac{1}{Z}(Id \quad 0)P<br>$$<br>normalized coord to image plane:<br>$$<br>x = kf\frac{X}{Z}=kf\hat{x}=\alpha\hat{x} \<br>y = lf\frac{Y}{Z}=lf\hat{y}=\beta\hat{y}<br>$$</p>
-<p>$$<br>\left{<br>\begin{array} \<br>x = \alpha\hat{x}-\alpha\cot{\theta}\hat{y}+x_0 \<br>y = \frac{\beta}{\sin{\theta}}\hat{y}+y_0<br>\end{array}<br>\right.<br>$$</p>
-<p>We can derive K:<br>$$<br>K = \left(<br>\begin{matrix}<br>\alpha &amp; -\alpha\cot{\theta} &amp; x_0 \ 0 &amp; \frac{\beta}{\sin{\theta}} &amp; y_0 \ 0 &amp; 0 &amp; 1<br>\end{matrix}<br>\right) \<br>p = K\hat{p}<br>$$</p>
-<p>Transformation equations；<br>$$<br>\tau =<br>\left(<br>\begin{matrix}<br>R &amp; t \<br>0^T &amp; 1<br>\end{matrix}<br>\right)<br>$$<br>We get:<br>$$<br>p = \frac{1}{Z}K(R \quad t)P<br>$$<br>M是透视投影矩阵充要条件：<br>$$<br>Det(A) \neq 0<br>$$<br>M是零偏斜（zero-skew）透视投影矩阵充要条件：<br>$$<br>Det(A) \neq 0 \<br>(a_1 \times a_2) · (a_2 \times a_3) = 0<br>$$</p>
-<p>M是零偏斜（zero-skew）、单位aspect-ratio透视投影矩阵充要条件：<br>$$<br>Det(A) \neq 0 \<br>(a_1 \times a_2) · (a_2 \times a_3) = 0 \<br>(a_1 \times a_3) · (a_1 \times a_3) = (a_2 \times a_3) · (a_2 \times a_3)<br>$$</p>
-<h4 id="Orthographic-Projection-正交投影"><a href="#Orthographic-Projection-正交投影" class="headerlink" title="Orthographic Projection (正交投影)"></a>Orthographic Projection (正交投影)</h4><h4 id="Weak-Perspective-弱透视投影"><a href="#Weak-Perspective-弱透视投影" class="headerlink" title="Weak Perspective (弱透视投影)"></a>Weak Perspective (弱透视投影)</h4><p>Assume all points have the same z-value $Z_r$<br>$$<br>p = \frac{1}{Z_r}K<br>\left(<br>\begin{matrix}<br>1 &amp; 0 &amp; 0 &amp; 0 \ 0 &amp; 1 &amp; 0 &amp; 0 \ 0 &amp; 0 &amp; 0 &amp; Z_r<br>\end{matrix}<br>\right)<br>\left(<br>\begin{matrix}<br>R &amp; t \ 0^T &amp; 1<br>\end{matrix}<br>\right) P<br>$$</p>
-<h3 id="Mapping-of-points-and-lines"><a href="#Mapping-of-points-and-lines" class="headerlink" title="Mapping of points and lines"></a>Mapping of points and lines</h3><h3 id="Affine-cameras"><a href="#Affine-cameras" class="headerlink" title="Affine cameras"></a>Affine cameras</h3><h3 id="Camera-calibration"><a href="#Camera-calibration" class="headerlink" title="Camera calibration"></a>Camera calibration</h3><h2 id="Radiometry"><a href="#Radiometry" class="headerlink" title="Radiometry"></a>Radiometry</h2><h3 id="Local-shading-model"><a href="#Local-shading-model" class="headerlink" title="Local shading model"></a>Local shading model</h3><h3 id="Photometric-stereo"><a href="#Photometric-stereo" class="headerlink" title="Photometric stereo"></a>Photometric stereo</h3><h3 id="Color-coordinates-RGB-HSV-Lab"><a href="#Color-coordinates-RGB-HSV-Lab" class="headerlink" title="Color coordinates (RGB) (HSV) (Lab)"></a>Color coordinates (RGB) (HSV) (Lab)</h3><h4 id="RGB-Red-Green-Blue"><a href="#RGB-Red-Green-Blue" class="headerlink" title="RGB: Red Green Blue"></a>RGB: Red Green Blue</h4><h4 id="HSV-Hue-Saturation-Value"><a href="#HSV-Hue-Saturation-Value" class="headerlink" title="HSV: Hue Saturation Value"></a>HSV: Hue Saturation Value</h4><p>$$<br>V \larr \max(R,G,B) \<br>S \larr<br>\left{ \begin{array} \<br>frac{V-\min(R,G,B)}{V} \quad if \ V \neq 0 \<br>0 \quad otherwise<br>\end{array} \right. \<br>H \larr<br>\left{ \begin{array} \<br>60 (G-B)/(V-\min(R,G,B)) \quad if \ V=R \<br>120+60(B-R)/(V-\min(R,G,B)) \quad if \ V=G \<br>240+60(R-G)/(V-\min(R,G,B)) \quad if \ V=B<br>\end{array} \right. \<br>if \ H &lt; 0 \ then \ H \larr H + 360<br>$$</p>
-<h1 id="Region-segmentation"><a href="#Region-segmentation" class="headerlink" title="Region segmentation"></a>Region segmentation</h1><h2 id="Super-pixels-SLIC"><a href="#Super-pixels-SLIC" class="headerlink" title="Super pixels (SLIC)"></a>Super pixels (SLIC)</h2><h2 id="K-means-clustering"><a href="#K-means-clustering" class="headerlink" title="K-means clustering"></a>K-means clustering</h2><h2 id="Mean-shift"><a href="#Mean-shift" class="headerlink" title="Mean-shift"></a>Mean-shift</h2><h2 id="Normalized-cuts"><a href="#Normalized-cuts" class="headerlink" title="Normalized cuts"></a>Normalized cuts</h2><h1 id="Edge-and-line-curve-detection"><a href="#Edge-and-line-curve-detection" class="headerlink" title="Edge and line (curve) detection"></a>Edge and line (curve) detection</h1><h2 id="Canny-edge"><a href="#Canny-edge" class="headerlink" title="Canny edge"></a>Canny edge</h2><h2 id="Hough-transform"><a href="#Hough-transform" class="headerlink" title="Hough transform"></a>Hough transform</h2><h1 id="Object-proposal-generators"><a href="#Object-proposal-generators" class="headerlink" title="Object proposal generators"></a>Object proposal generators</h1><h2 id="Selective-search"><a href="#Selective-search" class="headerlink" title="Selective search"></a>Selective search</h2><h2 id="Edge-Boxes"><a href="#Edge-Boxes" class="headerlink" title="Edge Boxes"></a>Edge Boxes</h2><h1 id="Point-Features"><a href="#Point-Features" class="headerlink" title="Point Features"></a>Point Features</h1><h2 id="SIFT-features"><a href="#SIFT-features" class="headerlink" title="SIFT features"></a>SIFT features</h2><h1 id="Homography"><a href="#Homography" class="headerlink" title="Homography"></a>Homography</h1><h2 id="Planar-object-localization"><a href="#Planar-object-localization" class="headerlink" title="Planar object localization"></a>Planar object localization</h2><h2 id="panorama-construction"><a href="#panorama-construction" class="headerlink" title="panorama construction"></a>panorama construction</h2><h2 id="RANSAC"><a href="#RANSAC" class="headerlink" title="RANSAC"></a>RANSAC</h2><h1 id="Stereo-analysis"><a href="#Stereo-analysis" class="headerlink" title="Stereo analysis"></a>Stereo analysis</h1><h2 id="Epipolar-geometry"><a href="#Epipolar-geometry" class="headerlink" title="Epipolar geometry"></a>Epipolar geometry</h2><h2 id="Essential-matrix"><a href="#Essential-matrix" class="headerlink" title="Essential matrix"></a>Essential matrix</h2><h2 id="Image-rectification"><a href="#Image-rectification" class="headerlink" title="Image rectification"></a>Image rectification</h2><h2 id="Triangulation"><a href="#Triangulation" class="headerlink" title="Triangulation"></a>Triangulation</h2><h2 id="Local-matching"><a href="#Local-matching" class="headerlink" title="Local matching"></a>Local matching</h2><h2 id="Adaptive-support-weighting"><a href="#Adaptive-support-weighting" class="headerlink" title="Adaptive support weighting"></a>Adaptive support weighting</h2><h2 id="Global-matching"><a href="#Global-matching" class="headerlink" title="Global matching"></a>Global matching</h2><h2 id="Semi-global-matching-high-level-concepts-only"><a href="#Semi-global-matching-high-level-concepts-only" class="headerlink" title="Semi-global matching (high-level concepts only)"></a>Semi-global matching (high-level concepts only)</h2><h1 id="Structure-from-motion"><a href="#Structure-from-motion" class="headerlink" title="Structure from motion"></a>Structure from motion</h1><h2 id="How-many-matched-suffice"><a href="#How-many-matched-suffice" class="headerlink" title="How many matched suffice?"></a>How many matched suffice?</h2><h2 id="Reconstruction"><a href="#Reconstruction" class="headerlink" title="Reconstruction"></a>Reconstruction</h2><h2 id="Bundle-adjustment"><a href="#Bundle-adjustment" class="headerlink" title="Bundle adjustment"></a>Bundle adjustment</h2><h2 id="Estimating-essential-matrix"><a href="#Estimating-essential-matrix" class="headerlink" title="Estimating essential matrix"></a>Estimating essential matrix</h2><h2 id="Two-perspective-calibrated-camera-case"><a href="#Two-perspective-calibrated-camera-case" class="headerlink" title="Two perspective calibrated camera case"></a>Two perspective calibrated camera case</h2><h2 id="Multiple-views"><a href="#Multiple-views" class="headerlink" title="Multiple views"></a>Multiple views</h2><h1 id="Active-ranging"><a href="#Active-ranging" class="headerlink" title="Active ranging"></a>Active ranging</h1><h2 id="Structured-lighting"><a href="#Structured-lighting" class="headerlink" title="Structured lighting"></a>Structured lighting</h2><h2 id="Time-of-flight"><a href="#Time-of-flight" class="headerlink" title="Time of flight"></a>Time of flight</h2><h2 id="Merging-depth-scans-but-not-using-quaternions"><a href="#Merging-depth-scans-but-not-using-quaternions" class="headerlink" title="Merging depth scans (but not using quaternions)"></a>Merging depth scans (but not using quaternions)</h2><h1 id="Object-Recognition"><a href="#Object-Recognition" class="headerlink" title="Object Recognition"></a>Object Recognition</h1><h2 id="Nearest-neighbor-classifier"><a href="#Nearest-neighbor-classifier" class="headerlink" title="Nearest neighbor classifier"></a>Nearest neighbor classifier</h2><h2 id="Bayes-classifier"><a href="#Bayes-classifier" class="headerlink" title="Bayes classifier"></a>Bayes classifier</h2><h3 id="Parametric-Gaussian"><a href="#Parametric-Gaussian" class="headerlink" title="Parametric (Gaussian)"></a>Parametric (Gaussian)</h3><h3 id="Naive-Bayes"><a href="#Naive-Bayes" class="headerlink" title="Naïve Bayes"></a>Naïve Bayes</h3><h2 id="Logistic-regression"><a href="#Logistic-regression" class="headerlink" title="Logistic regression"></a>Logistic regression</h2><h2 id="SVM"><a href="#SVM" class="headerlink" title="SVM"></a>SVM</h2><h3 id="Basic-slack-variables-kernel-functions"><a href="#Basic-slack-variables-kernel-functions" class="headerlink" title="Basic, slack variables, kernel functions"></a>Basic, slack variables, kernel functions</h3><h2 id="ROC-curve-cross-validation"><a href="#ROC-curve-cross-validation" class="headerlink" title="ROC curve, cross-validation"></a>ROC curve, cross-validation</h2>
+<h4 id="Back-projection"><a href="#Back-projection" class="headerlink" title="Back projection"></a>Back projection</h4><h3 id="Homogeneous-coordinates"><a href="#Homogeneous-coordinates" class="headerlink" title="Homogeneous coordinates"></a>Homogeneous coordinates</h3><script type="math/tex; mode=display">
+\left[
+ \begin{matrix}
+   x_h \\
+   y_h \\
+   w_h
+  \end{matrix} 
+\right]=
+\left[
+ \begin{matrix}
+   1 & 0 & 0 & 0 \\
+   0 & 1 & 0 & 0 \\
+   0 & 0 & \frac{1}{d} & 0
+  \end{matrix} 
+\right]
+\left[
+ \begin{matrix}
+   X_h \\
+   Y_h \\
+   Z_h \\
+   W_h
+  \end{matrix} 
+\right]</script><h3 id="Coordinate-transformations"><a href="#Coordinate-transformations" class="headerlink" title="Coordinate transformations"></a>Coordinate transformations</h3><h4 id="Normalized-Coordinates"><a href="#Normalized-Coordinates" class="headerlink" title="Normalized Coordinates"></a>Normalized Coordinates</h4><p><img src="media\3.png" alt=""></p>
+<p>projection to normalized coord:</p>
+<script type="math/tex; mode=display">
+\left\{
+\begin{aligned}
+\hat{x}=\frac{X}{Z} \\
+\hat{y}=\frac{Y}{Z}
+\end{aligned}
+\right. \lrarr \hat{p} = \frac{1}{Z}(Id \quad 0)P</script><p>normalized coord to image plane:</p>
+<script type="math/tex; mode=display">
+x = kf\frac{X}{Z}=kf\hat{x}=\alpha\hat{x} \\
+y = lf\frac{Y}{Z}=lf\hat{y}=\beta\hat{y}</script><script type="math/tex; mode=display">
+\left\{
+\begin{array} \\
+x = \alpha\hat{x}-\alpha\cot{\theta}\hat{y}+x_0 \\
+y = \frac{\beta}{\sin{\theta}}\hat{y}+y_0
+\end{array}
+\right.</script><p>We can derive K:</p>
+<script type="math/tex; mode=display">
+K = \left(
+\begin{matrix}
+\alpha & -\alpha\cot{\theta} & x_0 \\ 0 & \frac{\beta}{\sin{\theta}} & y_0 \\ 0 & 0 & 1
+\end{matrix}
+\right) \\
+p = K\hat{p}</script><p>Transformation equations；</p>
+<script type="math/tex; mode=display">
+\tau = 
+\left(
+\begin{matrix}
+R & t \\
+0^T & 1
+\end{matrix}
+\right)</script><p>We get:</p>
+<script type="math/tex; mode=display">
+p = \frac{1}{Z}K(R \quad t)P</script><p>M是透视投影矩阵充要条件：</p>
+<script type="math/tex; mode=display">
+Det(A) \neq 0</script><p>M是零偏斜（zero-skew）透视投影矩阵充要条件：</p>
+<script type="math/tex; mode=display">
+Det(A) \neq 0 \\
+(a_1 \times a_2) · (a_2 \times a_3) = 0</script><p>M是零偏斜（zero-skew）、单位aspect-ratio透视投影矩阵充要条件：</p>
+<script type="math/tex; mode=display">
+Det(A) \neq 0 \\
+(a_1 \times a_2) · (a_2 \times a_3) = 0 \\
+(a_1 \times a_3) · (a_1 \times a_3) = (a_2 \times a_3) · (a_2 \times a_3)</script><h4 id="Orthographic-Projection-正交投影"><a href="#Orthographic-Projection-正交投影" class="headerlink" title="Orthographic Projection (正交投影)"></a>Orthographic Projection (正交投影)</h4><h4 id="Weak-Perspective-弱透视投影"><a href="#Weak-Perspective-弱透视投影" class="headerlink" title="Weak Perspective (弱透视投影)"></a>Weak Perspective (弱透视投影)</h4><p>Assume all points have the same z-value $Z_r$</p>
+<script type="math/tex; mode=display">
+p = \frac{1}{Z_r}K 
+\left(
+\begin{matrix}
+1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 0 & Z_r
+\end{matrix}
+\right)
+\left(
+\begin{matrix}
+R & t \\ 0^T & 1
+\end{matrix}
+\right) P</script><h3 id="Mapping-of-points-and-lines"><a href="#Mapping-of-points-and-lines" class="headerlink" title="Mapping of points and lines"></a>Mapping of points and lines</h3><h3 id="Affine-cameras"><a href="#Affine-cameras" class="headerlink" title="Affine cameras"></a>Affine cameras</h3><h3 id="Camera-calibration"><a href="#Camera-calibration" class="headerlink" title="Camera calibration"></a>Camera calibration</h3><h2 id="Radiometry"><a href="#Radiometry" class="headerlink" title="Radiometry"></a>Radiometry</h2><h3 id="Local-shading-model"><a href="#Local-shading-model" class="headerlink" title="Local shading model"></a>Local shading model</h3><h3 id="Photometric-stereo"><a href="#Photometric-stereo" class="headerlink" title="Photometric stereo"></a>Photometric stereo</h3><h3 id="Color-coordinates-RGB-HSV-Lab"><a href="#Color-coordinates-RGB-HSV-Lab" class="headerlink" title="Color coordinates (RGB) (HSV) (Lab)"></a>Color coordinates (RGB) (HSV) (Lab)</h3><h4 id="RGB-Red-Green-Blue"><a href="#RGB-Red-Green-Blue" class="headerlink" title="RGB: Red Green Blue"></a>RGB: Red Green Blue</h4><h4 id="HSV-Hue-Saturation-Value"><a href="#HSV-Hue-Saturation-Value" class="headerlink" title="HSV: Hue Saturation Value"></a>HSV: Hue Saturation Value</h4><script type="math/tex; mode=display">
+V \larr \max(R,G,B) \\
+S \larr 
+\left\{ \begin{array} \\
+frac{V-\min(R,G,B)}{V} \quad if \ V \neq 0 \\
+0 \quad otherwise
+\end{array} \right. \\
+H \larr
+\left\{ \begin{array} \\
+60 (G-B)/(V-\min(R,G,B)) \quad if \ V=R \\
+120+60(B-R)/(V-\min(R,G,B)) \quad if \ V=G \\
+240+60(R-G)/(V-\min(R,G,B)) \quad if \ V=B
+\end{array} \right. \\
+if \ H < 0 \ then \ H \larr H + 360</script><h1 id="Region-segmentation"><a href="#Region-segmentation" class="headerlink" title="Region segmentation"></a>Region segmentation</h1><h2 id="Super-pixels-SLIC"><a href="#Super-pixels-SLIC" class="headerlink" title="Super pixels (SLIC)"></a>Super pixels (SLIC)</h2><h2 id="K-means-clustering"><a href="#K-means-clustering" class="headerlink" title="K-means clustering"></a>K-means clustering</h2><h2 id="Mean-shift"><a href="#Mean-shift" class="headerlink" title="Mean-shift"></a>Mean-shift</h2><h2 id="Normalized-cuts"><a href="#Normalized-cuts" class="headerlink" title="Normalized cuts"></a>Normalized cuts</h2><h1 id="Edge-and-line-curve-detection"><a href="#Edge-and-line-curve-detection" class="headerlink" title="Edge and line (curve) detection"></a>Edge and line (curve) detection</h1><h2 id="Canny-edge"><a href="#Canny-edge" class="headerlink" title="Canny edge"></a>Canny edge</h2><h2 id="Hough-transform"><a href="#Hough-transform" class="headerlink" title="Hough transform"></a>Hough transform</h2><h1 id="Object-proposal-generators"><a href="#Object-proposal-generators" class="headerlink" title="Object proposal generators"></a>Object proposal generators</h1><h2 id="Selective-search"><a href="#Selective-search" class="headerlink" title="Selective search"></a>Selective search</h2><h2 id="Edge-Boxes"><a href="#Edge-Boxes" class="headerlink" title="Edge Boxes"></a>Edge Boxes</h2><h1 id="Point-Features"><a href="#Point-Features" class="headerlink" title="Point Features"></a>Point Features</h1><h2 id="SIFT-features"><a href="#SIFT-features" class="headerlink" title="SIFT features"></a>SIFT features</h2><h1 id="Homography"><a href="#Homography" class="headerlink" title="Homography"></a>Homography</h1><h2 id="Planar-object-localization"><a href="#Planar-object-localization" class="headerlink" title="Planar object localization"></a>Planar object localization</h2><h2 id="panorama-construction"><a href="#panorama-construction" class="headerlink" title="panorama construction"></a>panorama construction</h2><h2 id="RANSAC"><a href="#RANSAC" class="headerlink" title="RANSAC"></a>RANSAC</h2><h1 id="Stereo-analysis"><a href="#Stereo-analysis" class="headerlink" title="Stereo analysis"></a>Stereo analysis</h1><h2 id="Epipolar-geometry"><a href="#Epipolar-geometry" class="headerlink" title="Epipolar geometry"></a>Epipolar geometry</h2><h2 id="Essential-matrix"><a href="#Essential-matrix" class="headerlink" title="Essential matrix"></a>Essential matrix</h2><h2 id="Image-rectification"><a href="#Image-rectification" class="headerlink" title="Image rectification"></a>Image rectification</h2><h2 id="Triangulation"><a href="#Triangulation" class="headerlink" title="Triangulation"></a>Triangulation</h2><h2 id="Local-matching"><a href="#Local-matching" class="headerlink" title="Local matching"></a>Local matching</h2><h2 id="Adaptive-support-weighting"><a href="#Adaptive-support-weighting" class="headerlink" title="Adaptive support weighting"></a>Adaptive support weighting</h2><h2 id="Global-matching"><a href="#Global-matching" class="headerlink" title="Global matching"></a>Global matching</h2><h2 id="Semi-global-matching-high-level-concepts-only"><a href="#Semi-global-matching-high-level-concepts-only" class="headerlink" title="Semi-global matching (high-level concepts only)"></a>Semi-global matching (high-level concepts only)</h2><h1 id="Structure-from-motion"><a href="#Structure-from-motion" class="headerlink" title="Structure from motion"></a>Structure from motion</h1><h2 id="How-many-matched-suffice"><a href="#How-many-matched-suffice" class="headerlink" title="How many matched suffice?"></a>How many matched suffice?</h2><h2 id="Reconstruction"><a href="#Reconstruction" class="headerlink" title="Reconstruction"></a>Reconstruction</h2><h2 id="Bundle-adjustment"><a href="#Bundle-adjustment" class="headerlink" title="Bundle adjustment"></a>Bundle adjustment</h2><h2 id="Estimating-essential-matrix"><a href="#Estimating-essential-matrix" class="headerlink" title="Estimating essential matrix"></a>Estimating essential matrix</h2><h2 id="Two-perspective-calibrated-camera-case"><a href="#Two-perspective-calibrated-camera-case" class="headerlink" title="Two perspective calibrated camera case"></a>Two perspective calibrated camera case</h2><h2 id="Multiple-views"><a href="#Multiple-views" class="headerlink" title="Multiple views"></a>Multiple views</h2><h1 id="Active-ranging"><a href="#Active-ranging" class="headerlink" title="Active ranging"></a>Active ranging</h1><h2 id="Structured-lighting"><a href="#Structured-lighting" class="headerlink" title="Structured lighting"></a>Structured lighting</h2><h2 id="Time-of-flight"><a href="#Time-of-flight" class="headerlink" title="Time of flight"></a>Time of flight</h2><h2 id="Merging-depth-scans-but-not-using-quaternions"><a href="#Merging-depth-scans-but-not-using-quaternions" class="headerlink" title="Merging depth scans (but not using quaternions)"></a>Merging depth scans (but not using quaternions)</h2><h1 id="Object-Recognition"><a href="#Object-Recognition" class="headerlink" title="Object Recognition"></a>Object Recognition</h1><h2 id="Nearest-neighbor-classifier"><a href="#Nearest-neighbor-classifier" class="headerlink" title="Nearest neighbor classifier"></a>Nearest neighbor classifier</h2><h2 id="Bayes-classifier"><a href="#Bayes-classifier" class="headerlink" title="Bayes classifier"></a>Bayes classifier</h2><h3 id="Parametric-Gaussian"><a href="#Parametric-Gaussian" class="headerlink" title="Parametric (Gaussian)"></a>Parametric (Gaussian)</h3><h3 id="Naive-Bayes"><a href="#Naive-Bayes" class="headerlink" title="Naïve Bayes"></a>Naïve Bayes</h3><h2 id="Logistic-regression"><a href="#Logistic-regression" class="headerlink" title="Logistic regression"></a>Logistic regression</h2><h2 id="SVM"><a href="#SVM" class="headerlink" title="SVM"></a>SVM</h2><h3 id="Basic-slack-variables-kernel-functions"><a href="#Basic-slack-variables-kernel-functions" class="headerlink" title="Basic, slack variables, kernel functions"></a>Basic, slack variables, kernel functions</h3><h2 id="ROC-curve-cross-validation"><a href="#ROC-curve-cross-validation" class="headerlink" title="ROC curve, cross-validation"></a>ROC curve, cross-validation</h2>
       
     </div>
 
@@ -309,16 +399,12 @@
       
           <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
 <h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
 <p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
 <h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
 <p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
 <h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
 <p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
 
       
