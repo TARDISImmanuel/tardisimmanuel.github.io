@@ -1,12 +1,55 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-  
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.1">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.1" color="#222">
 
-  
-  <title>test_post.md | Robert Z&#39;s Notes</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link rel="stylesheet" href="/css/main.css?v=7.4.1">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.4.1',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
   <meta name="description" content="Image formationGeometryPinhole camera modelAbstract camera model - box with a small hole Pinhole cameras work in practice, ignoring diffraction (衍射) Using lens to get more lights than pinhole $$\frac{">
 <meta property="og:type" content="article">
 <meta property="og:title" content="test_post.md">
@@ -20,77 +63,159 @@
 <meta property="og:updated_time" content="2019-10-19T07:28:55.963Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;tardisimmanuel.github.io&#x2F;2019&#x2F;10&#x2F;19&#x2F;test-post-md&#x2F;media%5C1.PNG">
+  <link rel="canonical" href="https://tardisimmanuel.github.io/2019/10/19/test-post-md/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>test_post.md | Robert Z's Notes</title>
   
-    <link rel="alternate" href="/atom.xml" title="Robert Z&#39;s Notes" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
 </head>
 
-<body>
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Robert Z&#39;s Notes</a>
-      </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">Robert Z&#39;s Notes</a>
-        </h2>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://tardisimmanuel.github.io"></form>
-      </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main"><article id="post-test-post-md" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/10/19/test-post-md/" class="article-date">
-  <time datetime="2019-10-19T07:06:45.000Z" itemprop="datePublished">2019-10-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      test_post.md
-    </h1>
-  
+<body itemscope itemtype="http://schema.org/WebPage">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
+    <div class="headband"></div>
 
-      </header>
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Robert Z's Notes</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">Robert Z's Notes</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
     
-    <div class="article-entry" itemprop="articleBody">
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="https://tardisimmanuel.github.io/2019/10/19/test-post-md/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="zzeng">
+      <meta itemprop="description" content="Robert Z's Notes">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Robert Z's Notes">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          test_post.md
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2019-10-19 00:06:45 / Modified: 00:28:55" itemprop="dateCreated datePublished" datetime="2019-10-19T00:06:45-07:00">2019-10-19</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
         <h1 id="Image-formation"><a href="#Image-formation" class="headerlink" title="Image formation"></a>Image formation</h1><h2 id="Geometry"><a href="#Geometry" class="headerlink" title="Geometry"></a>Geometry</h2><h3 id="Pinhole-camera-model"><a href="#Pinhole-camera-model" class="headerlink" title="Pinhole camera model"></a>Pinhole camera model</h3><p>Abstract camera model - box with a small hole</p>
 <p>Pinhole cameras work in practice, ignoring diffraction (衍射)</p>
@@ -130,103 +255,172 @@
 <h4 id="Orthographic-Projection-正交投影"><a href="#Orthographic-Projection-正交投影" class="headerlink" title="Orthographic Projection (正交投影)"></a>Orthographic Projection (正交投影)</h4><h4 id="Weak-Perspective-弱透视投影"><a href="#Weak-Perspective-弱透视投影" class="headerlink" title="Weak Perspective (弱透视投影)"></a>Weak Perspective (弱透视投影)</h4><p>Assume all points have the same z-value $Z_r$<br>$$<br>p = \frac{1}{Z_r}K<br>\left(<br>\begin{matrix}<br>1 &amp; 0 &amp; 0 &amp; 0 \ 0 &amp; 1 &amp; 0 &amp; 0 \ 0 &amp; 0 &amp; 0 &amp; Z_r<br>\end{matrix}<br>\right)<br>\left(<br>\begin{matrix}<br>R &amp; t \ 0^T &amp; 1<br>\end{matrix}<br>\right) P<br>$$</p>
 <h3 id="Mapping-of-points-and-lines"><a href="#Mapping-of-points-and-lines" class="headerlink" title="Mapping of points and lines"></a>Mapping of points and lines</h3><h3 id="Affine-cameras"><a href="#Affine-cameras" class="headerlink" title="Affine cameras"></a>Affine cameras</h3><h3 id="Camera-calibration"><a href="#Camera-calibration" class="headerlink" title="Camera calibration"></a>Camera calibration</h3><h2 id="Radiometry"><a href="#Radiometry" class="headerlink" title="Radiometry"></a>Radiometry</h2><h3 id="Local-shading-model"><a href="#Local-shading-model" class="headerlink" title="Local shading model"></a>Local shading model</h3><h3 id="Photometric-stereo"><a href="#Photometric-stereo" class="headerlink" title="Photometric stereo"></a>Photometric stereo</h3><h3 id="Color-coordinates-RGB-HSV-Lab"><a href="#Color-coordinates-RGB-HSV-Lab" class="headerlink" title="Color coordinates (RGB) (HSV) (Lab)"></a>Color coordinates (RGB) (HSV) (Lab)</h3><h4 id="RGB-Red-Green-Blue"><a href="#RGB-Red-Green-Blue" class="headerlink" title="RGB: Red Green Blue"></a>RGB: Red Green Blue</h4><h4 id="HSV-Hue-Saturation-Value"><a href="#HSV-Hue-Saturation-Value" class="headerlink" title="HSV: Hue Saturation Value"></a>HSV: Hue Saturation Value</h4><p>$$<br>V \larr \max(R,G,B) \<br>S \larr<br>\left{ \begin{array} \<br>frac{V-\min(R,G,B)}{V} \quad if \ V \neq 0 \<br>0 \quad otherwise<br>\end{array} \right. \<br>H \larr<br>\left{ \begin{array} \<br>60 (G-B)/(V-\min(R,G,B)) \quad if \ V=R \<br>120+60(B-R)/(V-\min(R,G,B)) \quad if \ V=G \<br>240+60(R-G)/(V-\min(R,G,B)) \quad if \ V=B<br>\end{array} \right. \<br>if \ H &lt; 0 \ then \ H \larr H + 360<br>$$</p>
 <h1 id="Region-segmentation"><a href="#Region-segmentation" class="headerlink" title="Region segmentation"></a>Region segmentation</h1><h2 id="Super-pixels-SLIC"><a href="#Super-pixels-SLIC" class="headerlink" title="Super pixels (SLIC)"></a>Super pixels (SLIC)</h2><h2 id="K-means-clustering"><a href="#K-means-clustering" class="headerlink" title="K-means clustering"></a>K-means clustering</h2><h2 id="Mean-shift"><a href="#Mean-shift" class="headerlink" title="Mean-shift"></a>Mean-shift</h2><h2 id="Normalized-cuts"><a href="#Normalized-cuts" class="headerlink" title="Normalized cuts"></a>Normalized cuts</h2><h1 id="Edge-and-line-curve-detection"><a href="#Edge-and-line-curve-detection" class="headerlink" title="Edge and line (curve) detection"></a>Edge and line (curve) detection</h1><h2 id="Canny-edge"><a href="#Canny-edge" class="headerlink" title="Canny edge"></a>Canny edge</h2><h2 id="Hough-transform"><a href="#Hough-transform" class="headerlink" title="Hough transform"></a>Hough transform</h2><h1 id="Object-proposal-generators"><a href="#Object-proposal-generators" class="headerlink" title="Object proposal generators"></a>Object proposal generators</h1><h2 id="Selective-search"><a href="#Selective-search" class="headerlink" title="Selective search"></a>Selective search</h2><h2 id="Edge-Boxes"><a href="#Edge-Boxes" class="headerlink" title="Edge Boxes"></a>Edge Boxes</h2><h1 id="Point-Features"><a href="#Point-Features" class="headerlink" title="Point Features"></a>Point Features</h1><h2 id="SIFT-features"><a href="#SIFT-features" class="headerlink" title="SIFT features"></a>SIFT features</h2><h1 id="Homography"><a href="#Homography" class="headerlink" title="Homography"></a>Homography</h1><h2 id="Planar-object-localization"><a href="#Planar-object-localization" class="headerlink" title="Planar object localization"></a>Planar object localization</h2><h2 id="panorama-construction"><a href="#panorama-construction" class="headerlink" title="panorama construction"></a>panorama construction</h2><h2 id="RANSAC"><a href="#RANSAC" class="headerlink" title="RANSAC"></a>RANSAC</h2><h1 id="Stereo-analysis"><a href="#Stereo-analysis" class="headerlink" title="Stereo analysis"></a>Stereo analysis</h1><h2 id="Epipolar-geometry"><a href="#Epipolar-geometry" class="headerlink" title="Epipolar geometry"></a>Epipolar geometry</h2><h2 id="Essential-matrix"><a href="#Essential-matrix" class="headerlink" title="Essential matrix"></a>Essential matrix</h2><h2 id="Image-rectification"><a href="#Image-rectification" class="headerlink" title="Image rectification"></a>Image rectification</h2><h2 id="Triangulation"><a href="#Triangulation" class="headerlink" title="Triangulation"></a>Triangulation</h2><h2 id="Local-matching"><a href="#Local-matching" class="headerlink" title="Local matching"></a>Local matching</h2><h2 id="Adaptive-support-weighting"><a href="#Adaptive-support-weighting" class="headerlink" title="Adaptive support weighting"></a>Adaptive support weighting</h2><h2 id="Global-matching"><a href="#Global-matching" class="headerlink" title="Global matching"></a>Global matching</h2><h2 id="Semi-global-matching-high-level-concepts-only"><a href="#Semi-global-matching-high-level-concepts-only" class="headerlink" title="Semi-global matching (high-level concepts only)"></a>Semi-global matching (high-level concepts only)</h2><h1 id="Structure-from-motion"><a href="#Structure-from-motion" class="headerlink" title="Structure from motion"></a>Structure from motion</h1><h2 id="How-many-matched-suffice"><a href="#How-many-matched-suffice" class="headerlink" title="How many matched suffice?"></a>How many matched suffice?</h2><h2 id="Reconstruction"><a href="#Reconstruction" class="headerlink" title="Reconstruction"></a>Reconstruction</h2><h2 id="Bundle-adjustment"><a href="#Bundle-adjustment" class="headerlink" title="Bundle adjustment"></a>Bundle adjustment</h2><h2 id="Estimating-essential-matrix"><a href="#Estimating-essential-matrix" class="headerlink" title="Estimating essential matrix"></a>Estimating essential matrix</h2><h2 id="Two-perspective-calibrated-camera-case"><a href="#Two-perspective-calibrated-camera-case" class="headerlink" title="Two perspective calibrated camera case"></a>Two perspective calibrated camera case</h2><h2 id="Multiple-views"><a href="#Multiple-views" class="headerlink" title="Multiple views"></a>Multiple views</h2><h1 id="Active-ranging"><a href="#Active-ranging" class="headerlink" title="Active ranging"></a>Active ranging</h1><h2 id="Structured-lighting"><a href="#Structured-lighting" class="headerlink" title="Structured lighting"></a>Structured lighting</h2><h2 id="Time-of-flight"><a href="#Time-of-flight" class="headerlink" title="Time of flight"></a>Time of flight</h2><h2 id="Merging-depth-scans-but-not-using-quaternions"><a href="#Merging-depth-scans-but-not-using-quaternions" class="headerlink" title="Merging depth scans (but not using quaternions)"></a>Merging depth scans (but not using quaternions)</h2><h1 id="Object-Recognition"><a href="#Object-Recognition" class="headerlink" title="Object Recognition"></a>Object Recognition</h1><h2 id="Nearest-neighbor-classifier"><a href="#Nearest-neighbor-classifier" class="headerlink" title="Nearest neighbor classifier"></a>Nearest neighbor classifier</h2><h2 id="Bayes-classifier"><a href="#Bayes-classifier" class="headerlink" title="Bayes classifier"></a>Bayes classifier</h2><h3 id="Parametric-Gaussian"><a href="#Parametric-Gaussian" class="headerlink" title="Parametric (Gaussian)"></a>Parametric (Gaussian)</h3><h3 id="Naive-Bayes"><a href="#Naive-Bayes" class="headerlink" title="Naïve Bayes"></a>Naïve Bayes</h3><h2 id="Logistic-regression"><a href="#Logistic-regression" class="headerlink" title="Logistic regression"></a>Logistic regression</h2><h2 id="SVM"><a href="#SVM" class="headerlink" title="SVM"></a>SVM</h2><h3 id="Basic-slack-variables-kernel-functions"><a href="#Basic-slack-variables-kernel-functions" class="headerlink" title="Basic, slack variables, kernel functions"></a>Basic, slack variables, kernel functions</h3><h2 id="ROC-curve-cross-validation"><a href="#ROC-curve-cross-validation" class="headerlink" title="ROC curve, cross-validation"></a>ROC curve, cross-validation</h2>
-      
     </div>
-    <footer class="article-footer">
-      <a data-url="https://tardisimmanuel.github.io/2019/10/19/test-post-md/" data-id="ck1x8r9lb000094m953z96ily" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
+
     
-<nav id="article-nav">
-  
-  
-    <a href="/2019/10/17/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Hello World</div>
-    </a>
-  
-</nav>
+    
+    
 
-  
-</article>
+      <footer class="post-footer">
 
-</section>
         
-          <aside id="sidebar">
-  
-    
 
-  
-    
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2019/10/17/hello-world/" rel="next" title="Hello World">
+                  <i class="fa fa-chevron-left"></i> Hello World
+                </a>
+            </div>
 
-  
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+            </div>
+          </div>
+      </footer>
     
+  </article>
   
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li></ul>
-    </div>
+  
+  
+
   </div>
 
 
+          </div>
+          
+
+        </div>
+          
   
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2019/10/19/test-post-md/">test_post.md</a>
-          </li>
-        
-          <li>
-            <a href="/2019/10/17/hello-world/">Hello World</a>
-          </li>
-        
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
       </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Image-formation"><span class="nav-number">1.</span> <span class="nav-text">Image formation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Geometry"><span class="nav-number">1.1.</span> <span class="nav-text">Geometry</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Pinhole-camera-model"><span class="nav-number">1.1.1.</span> <span class="nav-text">Pinhole camera model</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Lens-Distortions"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">Lens Distortions</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Equation-of-projection"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">Equation of projection</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Back-projection"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">Back projection</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Homogeneous-coordinates"><span class="nav-number">1.1.2.</span> <span class="nav-text">Homogeneous coordinates</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Coordinate-transformations"><span class="nav-number">1.1.3.</span> <span class="nav-text">Coordinate transformations</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Normalized-Coordinates"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">Normalized Coordinates</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Orthographic-Projection-正交投影"><span class="nav-number">1.1.3.2.</span> <span class="nav-text">Orthographic Projection (正交投影)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Weak-Perspective-弱透视投影"><span class="nav-number">1.1.3.3.</span> <span class="nav-text">Weak Perspective (弱透视投影)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mapping-of-points-and-lines"><span class="nav-number">1.1.4.</span> <span class="nav-text">Mapping of points and lines</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Affine-cameras"><span class="nav-number">1.1.5.</span> <span class="nav-text">Affine cameras</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Camera-calibration"><span class="nav-number">1.1.6.</span> <span class="nav-text">Camera calibration</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Radiometry"><span class="nav-number">1.2.</span> <span class="nav-text">Radiometry</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Local-shading-model"><span class="nav-number">1.2.1.</span> <span class="nav-text">Local shading model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Photometric-stereo"><span class="nav-number">1.2.2.</span> <span class="nav-text">Photometric stereo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Color-coordinates-RGB-HSV-Lab"><span class="nav-number">1.2.3.</span> <span class="nav-text">Color coordinates (RGB) (HSV) (Lab)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#RGB-Red-Green-Blue"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">RGB: Red Green Blue</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HSV-Hue-Saturation-Value"><span class="nav-number">1.2.3.2.</span> <span class="nav-text">HSV: Hue Saturation Value</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Region-segmentation"><span class="nav-number">2.</span> <span class="nav-text">Region segmentation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Super-pixels-SLIC"><span class="nav-number">2.1.</span> <span class="nav-text">Super pixels (SLIC)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#K-means-clustering"><span class="nav-number">2.2.</span> <span class="nav-text">K-means clustering</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mean-shift"><span class="nav-number">2.3.</span> <span class="nav-text">Mean-shift</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Normalized-cuts"><span class="nav-number">2.4.</span> <span class="nav-text">Normalized cuts</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Edge-and-line-curve-detection"><span class="nav-number">3.</span> <span class="nav-text">Edge and line (curve) detection</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Canny-edge"><span class="nav-number">3.1.</span> <span class="nav-text">Canny edge</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hough-transform"><span class="nav-number">3.2.</span> <span class="nav-text">Hough transform</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Object-proposal-generators"><span class="nav-number">4.</span> <span class="nav-text">Object proposal generators</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Selective-search"><span class="nav-number">4.1.</span> <span class="nav-text">Selective search</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Edge-Boxes"><span class="nav-number">4.2.</span> <span class="nav-text">Edge Boxes</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Point-Features"><span class="nav-number">5.</span> <span class="nav-text">Point Features</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SIFT-features"><span class="nav-number">5.1.</span> <span class="nav-text">SIFT features</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Homography"><span class="nav-number">6.</span> <span class="nav-text">Homography</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Planar-object-localization"><span class="nav-number">6.1.</span> <span class="nav-text">Planar object localization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#panorama-construction"><span class="nav-number">6.2.</span> <span class="nav-text">panorama construction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RANSAC"><span class="nav-number">6.3.</span> <span class="nav-text">RANSAC</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Stereo-analysis"><span class="nav-number">7.</span> <span class="nav-text">Stereo analysis</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Epipolar-geometry"><span class="nav-number">7.1.</span> <span class="nav-text">Epipolar geometry</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Essential-matrix"><span class="nav-number">7.2.</span> <span class="nav-text">Essential matrix</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Image-rectification"><span class="nav-number">7.3.</span> <span class="nav-text">Image rectification</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Triangulation"><span class="nav-number">7.4.</span> <span class="nav-text">Triangulation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Local-matching"><span class="nav-number">7.5.</span> <span class="nav-text">Local matching</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Adaptive-support-weighting"><span class="nav-number">7.6.</span> <span class="nav-text">Adaptive support weighting</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Global-matching"><span class="nav-number">7.7.</span> <span class="nav-text">Global matching</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Semi-global-matching-high-level-concepts-only"><span class="nav-number">7.8.</span> <span class="nav-text">Semi-global matching (high-level concepts only)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Structure-from-motion"><span class="nav-number">8.</span> <span class="nav-text">Structure from motion</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#How-many-matched-suffice"><span class="nav-number">8.1.</span> <span class="nav-text">How many matched suffice?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reconstruction"><span class="nav-number">8.2.</span> <span class="nav-text">Reconstruction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bundle-adjustment"><span class="nav-number">8.3.</span> <span class="nav-text">Bundle adjustment</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Estimating-essential-matrix"><span class="nav-number">8.4.</span> <span class="nav-text">Estimating essential matrix</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Two-perspective-calibrated-camera-case"><span class="nav-number">8.5.</span> <span class="nav-text">Two perspective calibrated camera case</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Multiple-views"><span class="nav-number">8.6.</span> <span class="nav-text">Multiple views</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Active-ranging"><span class="nav-number">9.</span> <span class="nav-text">Active ranging</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Structured-lighting"><span class="nav-number">9.1.</span> <span class="nav-text">Structured lighting</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Time-of-flight"><span class="nav-number">9.2.</span> <span class="nav-text">Time of flight</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Merging-depth-scans-but-not-using-quaternions"><span class="nav-number">9.3.</span> <span class="nav-text">Merging depth scans (but not using quaternions)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Object-Recognition"><span class="nav-number">10.</span> <span class="nav-text">Object Recognition</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Nearest-neighbor-classifier"><span class="nav-number">10.1.</span> <span class="nav-text">Nearest neighbor classifier</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bayes-classifier"><span class="nav-number">10.2.</span> <span class="nav-text">Bayes classifier</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Parametric-Gaussian"><span class="nav-number">10.2.1.</span> <span class="nav-text">Parametric (Gaussian)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Naive-Bayes"><span class="nav-number">10.2.2.</span> <span class="nav-text">Naïve Bayes</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Logistic-regression"><span class="nav-number">10.3.</span> <span class="nav-text">Logistic regression</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SVM"><span class="nav-number">10.4.</span> <span class="nav-text">SVM</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Basic-slack-variables-kernel-functions"><span class="nav-number">10.4.1.</span> <span class="nav-text">Basic, slack variables, kernel functions</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ROC-curve-cross-validation"><span class="nav-number">10.5.</span> <span class="nav-text">ROC curve, cross-validation</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="zzeng"
+    src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">zzeng</p>
+  <div class="site-description" itemprop="description">Robert Z's Notes</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
     </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zzeng</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.0.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.4.1
   </div>
 
-  
-</aside>
+        
+
+
+
+
+
+
+
+
+
+
+
+
         
       </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2019 zzeng<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
+    </footer>
   </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
+
   
-    <a href="/" class="mobile-nav-link">Home</a>
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/utils.js?v=7.4.1"></script><script src="/js/motion.js?v=7.4.1"></script>
+<script src="/js/schemes/muse.js?v=7.4.1"></script>
+<script src="/js/next-boot.js?v=7.4.1"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
   
-    <a href="/archives" class="mobile-nav-link">Archives</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
-</nav>
-    
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  
 
+  
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+  
 
-
-<script src="/js/script.js"></script>
-
-
-
-  </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
 </html>
