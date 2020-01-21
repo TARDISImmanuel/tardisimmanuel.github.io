@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.1">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.1" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.1">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.4.1',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="代码： 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495969798991001011">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CUDA + OpenCV 编程 2：CUDA + Windows multi-threads">
+<meta property="og:url" content="https:&#x2F;&#x2F;tardisimmanuel.github.io&#x2F;2020&#x2F;01&#x2F;21&#x2F;opencv_cuda_2nd&#x2F;index.html">
+<meta property="og:site_name" content="Robert Z&#39;s Notes">
+<meta property="og:description" content="代码： 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495969798991001011">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-01-21T08:09:16.409Z">
+<meta name="twitter:card" content="summary">
+  <link rel="canonical" href="https://tardisimmanuel.github.io/2020/01/21/opencv_cuda_2nd/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>CUDA + OpenCV 编程 2：CUDA + Windows multi-threads | Robert Z's Notes</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Robert Z's Notes</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">Robert Z's Notes</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="https://tardisimmanuel.github.io/2020/01/21/opencv_cuda_2nd/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="zzeng">
+      <meta itemprop="description" content="Robert Z's Notes">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Robert Z's Notes">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          CUDA + OpenCV 编程 2：CUDA + Windows multi-threads
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-01-21 00:06:06 / Modified: 00:09:16" itemprop="dateCreated datePublished" datetime="2020-01-21T00:06:06-08:00">2020-01-21</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CUDA/" itemprop="url" rel="index">
+                    <span itemprop="name">CUDA</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"cuda_runtime.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"device_launch_parameters.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;Windows.h&gt;</span></span></span><br><span class="line"></span><br><span class="line">HANDLE g_hSemaphore[<span class="number">4</span>];</span><br><span class="line">HANDLE mainSemaphore[<span class="number">4</span>];</span><br><span class="line">HANDLE start_Semaphore[<span class="number">4</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">ProcessArgs</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span>* hehe1;</span><br><span class="line">    <span class="keyword">int</span>* hehe2;</span><br><span class="line">&#125; ProcessArgs;</span><br><span class="line"></span><br><span class="line"><span class="function">cudaError_t <span class="title">addWithCuda</span><span class="params">(<span class="keyword">int</span> *c, <span class="keyword">const</span> <span class="keyword">int</span> *a, <span class="keyword">const</span> <span class="keyword">int</span> *b, <span class="keyword">unsigned</span> <span class="keyword">int</span> size)</span></span>;</span><br><span class="line"></span><br><span class="line">__<span class="function">global__ <span class="keyword">void</span> <span class="title">addKernel</span><span class="params">(<span class="keyword">int</span> *c, <span class="keyword">const</span> <span class="keyword">int</span> *a, <span class="keyword">const</span> <span class="keyword">int</span> *b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i = threadIdx.x;</span><br><span class="line">    c[i] = a[i] + b[i];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">unsigned</span> <span class="keyword">long</span> __<span class="function">stdcall <span class="title">run</span><span class="params">(LPVOID lpParameters)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ProcessArgs* pargs = (ProcessArgs*)lpParameters;</span><br><span class="line">    <span class="keyword">int</span>* h1 = pargs-&gt;hehe1;</span><br><span class="line">    <span class="keyword">int</span>* h2 = pargs-&gt;hehe2;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (<span class="literal">true</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        WaitForSingleObject(g_hSemaphore[*h1], INFINITE);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">const</span> <span class="keyword">int</span> arraySize = <span class="number">5</span>;</span><br><span class="line">        <span class="keyword">const</span> <span class="keyword">int</span> a[arraySize] = &#123; <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span> &#125;;</span><br><span class="line">        <span class="keyword">const</span> <span class="keyword">int</span> b[arraySize] = &#123; <span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>, <span class="number">50</span> &#125;;</span><br><span class="line">        <span class="keyword">int</span> c[arraySize] = &#123; <span class="number">0</span> &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Add vectors in parallel.</span></span><br><span class="line">        cudaError_t cudaStatus = addWithCuda(c, a, b, arraySize);</span><br><span class="line">        <span class="keyword">if</span> (cudaStatus != cudaSuccess) &#123;</span><br><span class="line">            <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">"addWithCuda failed!"</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"&#123;1,2,3,4,5&#125; + &#123;10,20,30,40,50&#125; = &#123;%d,%d,%d,%d,%d&#125; ------ %d\n"</span>,</span><br><span class="line">            c[<span class="number">0</span>], c[<span class="number">1</span>], c[<span class="number">2</span>], c[<span class="number">3</span>], c[<span class="number">4</span>], *h1);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// cudaDeviceReset must be called before exiting in order for profiling and</span></span><br><span class="line">        <span class="comment">// tracing tools such as Nsight and Visual Profiler to show complete traces.</span></span><br><span class="line">        <span class="comment">/*cudaStatus = cudaDeviceReset();</span></span><br><span class="line"><span class="comment">        if (cudaStatus != cudaSuccess) &#123;</span></span><br><span class="line"><span class="comment">            fprintf(stderr, "cudaDeviceReset failed!");</span></span><br><span class="line"><span class="comment">            return 1;</span></span><br><span class="line"><span class="comment">        &#125;*/</span></span><br><span class="line"></span><br><span class="line">        ReleaseSemaphore(mainSemaphore[*h1], <span class="number">1</span>, <span class="literal">NULL</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// semaphore init</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        g_hSemaphore[i] = CreateSemaphore(<span class="literal">NULL</span>          <span class="comment">// semaphore security feature</span></span><br><span class="line">            , <span class="number">1</span>            <span class="comment">// set the initial value of semaphore</span></span><br><span class="line">            , <span class="number">1</span>            <span class="comment">// maximum value of semaphore</span></span><br><span class="line">            , <span class="literal">NULL</span>         <span class="comment">// semaphore's name</span></span><br><span class="line">        );</span><br><span class="line">        mainSemaphore[i] = CreateSemaphore(<span class="literal">NULL</span>          <span class="comment">// semaphore security feature</span></span><br><span class="line">            , <span class="number">0</span>            <span class="comment">// set the initial value of semaphore</span></span><br><span class="line">            , <span class="number">1</span>            <span class="comment">// maximum value of semaphore</span></span><br><span class="line">            , <span class="literal">NULL</span>         <span class="comment">// semaphore's name</span></span><br><span class="line">        );</span><br><span class="line">        start_Semaphore[i] = CreateSemaphore(<span class="literal">NULL</span>          <span class="comment">// semaphore security feature</span></span><br><span class="line">            , <span class="number">0</span>            <span class="comment">// set the initial value of semaphore</span></span><br><span class="line">            , <span class="number">1</span>            <span class="comment">// maximum value of semaphore</span></span><br><span class="line">            , <span class="literal">NULL</span>         <span class="comment">// semaphore's name</span></span><br><span class="line">        );</span><br><span class="line">        <span class="keyword">if</span> (<span class="literal">NULL</span> == g_hSemaphore[i] || <span class="literal">NULL</span> == mainSemaphore[i] || start_Semaphore[i] == <span class="literal">NULL</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"create Semaphore failed! error_code:"</span> &lt;&lt; GetLastError() &lt;&lt; <span class="string">"\n"</span>;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> p1 = <span class="number">90</span>, p2 = <span class="number">67</span>;</span><br><span class="line">    <span class="keyword">int</span> id[<span class="number">4</span>] = &#123; <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span> &#125;;</span><br><span class="line">    ProcessArgs pargs[<span class="number">4</span>];</span><br><span class="line">    HANDLE  hthreads[<span class="number">4</span>] = &#123; <span class="literal">NULL</span>, <span class="literal">NULL</span>, <span class="literal">NULL</span>, <span class="literal">NULL</span> &#125;;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">long</span> ulThreadId[<span class="number">4</span>];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        pargs[i].hehe1 = &amp;id[i];</span><br><span class="line">        pargs[i].hehe2 = &amp;p2;</span><br><span class="line">        hthreads[i] = CreateThread(<span class="literal">NULL</span>, <span class="number">0</span>, run, &amp;pargs[i], <span class="number">0</span>, &amp;ulThreadId[i]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Sleep(<span class="number">2000</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (<span class="literal">true</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        WaitForMultipleObjects(<span class="number">4</span>, mainSemaphore, <span class="literal">true</span>, INFINITE);</span><br><span class="line"></span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"111\n"</span>;</span><br><span class="line"></span><br><span class="line">        ReleaseSemaphore(g_hSemaphore[<span class="number">0</span>], <span class="number">1</span>, <span class="literal">NULL</span>);</span><br><span class="line">        ReleaseSemaphore(g_hSemaphore[<span class="number">1</span>], <span class="number">1</span>, <span class="literal">NULL</span>);</span><br><span class="line">        ReleaseSemaphore(g_hSemaphore[<span class="number">2</span>], <span class="number">1</span>, <span class="literal">NULL</span>);</span><br><span class="line">        ReleaseSemaphore(g_hSemaphore[<span class="number">3</span>], <span class="number">1</span>, <span class="literal">NULL</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Helper function for using CUDA to add vectors in parallel.</span></span><br><span class="line"><span class="function">cudaError_t <span class="title">addWithCuda</span><span class="params">(<span class="keyword">int</span> *c, <span class="keyword">const</span> <span class="keyword">int</span> *a, <span class="keyword">const</span> <span class="keyword">int</span> *b, <span class="keyword">unsigned</span> <span class="keyword">int</span> size)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> *dev_a = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> *dev_b = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> *dev_c = <span class="number">0</span>;</span><br><span class="line">    cudaError_t cudaStatus;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Choose which GPU to run on, change this on a multi-GPU system.</span></span><br><span class="line">    cudaStatus = cudaSetDevice(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">if</span> (cudaStatus != cudaSuccess) &#123;</span><br><span class="line">        <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">"cudaSetDevice failed!  Do you have a CUDA-capable GPU installed?"</span>);</span><br><span class="line">        <span class="keyword">goto</span> Error;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Allocate GPU buffers for three vectors (two input, one output)    .</span></span><br><span class="line">    cudaStatus = cudaMalloc((<span class="keyword">void</span>**)&amp;dev_c, size * <span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line">    <span class="keyword">if</span> (cudaStatus != cudaSuccess) &#123;</span><br><span class="line">        <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">"cudaMalloc failed!"</span>);</span><br><span class="line">        <span class="keyword">goto</span> Error;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    cudaStatus = cudaMalloc((<span class="keyword">void</span>**)&amp;dev_a, size * <span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line">    <span class="keyword">if</span> (cudaStatus != cudaSuccess) &#123;</span><br><span class="line">        <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">"cudaMalloc failed!"</span>);</span><br><span class="line">        <span class="keyword">goto</span> Error;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    cudaStatus = cudaMalloc((<span class="keyword">void</span>**)&amp;dev_b, size * <span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line">    <span class="keyword">if</span> (cudaStatus != cudaSuccess) &#123;</span><br><span class="line">        <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">"cudaMalloc failed!"</span>);</span><br><span class="line">        <span class="keyword">goto</span> Error;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Copy input vectors from host memory to GPU buffers.</span></span><br><span class="line">    cudaStatus = cudaMemcpy(dev_a, a, size * <span class="keyword">sizeof</span>(<span class="keyword">int</span>), cudaMemcpyHostToDevice);</span><br><span class="line">    <span class="keyword">if</span> (cudaStatus != cudaSuccess) &#123;</span><br><span class="line">        <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">"cudaMemcpy failed!"</span>);</span><br><span class="line">        <span class="keyword">goto</span> Error;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    cudaStatus = cudaMemcpy(dev_b, b, size * <span class="keyword">sizeof</span>(<span class="keyword">int</span>), cudaMemcpyHostToDevice);</span><br><span class="line">    <span class="keyword">if</span> (cudaStatus != cudaSuccess) &#123;</span><br><span class="line">        <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">"cudaMemcpy failed!"</span>);</span><br><span class="line">        <span class="keyword">goto</span> Error;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Launch a kernel on the GPU with one thread for each element.</span></span><br><span class="line">    addKernel&lt;&lt;&lt;<span class="number">1</span>, size&gt;&gt;&gt;(dev_c, dev_a, dev_b);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Check for any errors launching the kernel</span></span><br><span class="line">    cudaStatus = cudaGetLastError();</span><br><span class="line">    <span class="keyword">if</span> (cudaStatus != cudaSuccess) &#123;</span><br><span class="line">        <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">"addKernel launch failed: %s\n"</span>, cudaGetErrorString(cudaStatus));</span><br><span class="line">        <span class="keyword">goto</span> Error;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// cudaDeviceSynchronize waits for the kernel to finish, and returns</span></span><br><span class="line">    <span class="comment">// any errors encountered during the launch.</span></span><br><span class="line">    cudaStatus = cudaDeviceSynchronize();</span><br><span class="line">    <span class="keyword">if</span> (cudaStatus != cudaSuccess) &#123;</span><br><span class="line">        <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">"cudaDeviceSynchronize returned error code %d after launching addKernel!\n"</span>, cudaStatus);</span><br><span class="line">        <span class="keyword">goto</span> Error;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Copy output vector from GPU buffer to host memory.</span></span><br><span class="line">    cudaStatus = cudaMemcpy(c, dev_c, size * <span class="keyword">sizeof</span>(<span class="keyword">int</span>), cudaMemcpyDeviceToHost);</span><br><span class="line">    <span class="keyword">if</span> (cudaStatus != cudaSuccess) &#123;</span><br><span class="line">        <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">"cudaMemcpy failed!"</span>);</span><br><span class="line">        <span class="keyword">goto</span> Error;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">Error:</span><br><span class="line">    cudaFree(dev_c);</span><br><span class="line">    cudaFree(dev_a);</span><br><span class="line">    cudaFree(dev_b);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> cudaStatus;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">CPU: Intel(R) Core(TM) i7-8750H CPU @ 2.20GHz</span><br><span class="line">	6 cores, 12 logical processors</span><br><span class="line">GPU: NVIDIA GeForce GTX 1050 Ti, CUDA 10.1</span><br><span class="line">OS: Windows 10.0.18362.0 SDK, Visual Studio 2019</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;1,2,3,4,5&#125; + &#123;10,20,30,40,50&#125; = &#123;11,22,33,44,55&#125; ------ 3</span><br><span class="line">&#123;1,2,3,4,5&#125; + &#123;10,20,30,40,50&#125; = &#123;11,22,33,44,55&#125; ------ 2</span><br><span class="line">&#123;1,2,3,4,5&#125; + &#123;10,20,30,40,50&#125; = &#123;11,22,33,44,55&#125; ------ 1</span><br><span class="line">&#123;1,2,3,4,5&#125; + &#123;10,20,30,40,50&#125; = &#123;11,22,33,44,55&#125; ------ 0</span><br><span class="line">111</span><br><span class="line">&#123;1,2,3,4,5&#125; + &#123;10,20,30,40,50&#125; = &#123;11,22,33,44,55&#125; ------ 0</span><br><span class="line">&#123;1,2,3,4,5&#125; + &#123;10,20,30,40,50&#125; = &#123;11,22,33,44,55&#125; ------ 3</span><br><span class="line">&#123;1,2,3,4,5&#125; + &#123;10,20,30,40,50&#125; = &#123;11,22,33,44,55&#125; ------ 2</span><br><span class="line">&#123;1,2,3,4,5&#125; + &#123;10,20,30,40,50&#125; = &#123;11,22,33,44,55&#125; ------ 1</span><br><span class="line">111</span><br><span class="line">&#123;1,2,3,4,5&#125; + &#123;10,20,30,40,50&#125; = &#123;11,22,33,44,55&#125; ------ 1</span><br><span class="line">&#123;1,2,3,4,5&#125; + &#123;10,20,30,40,50&#125; = &#123;11,22,33,44,55&#125; ------ 3</span><br><span class="line">&#123;1,2,3,4,5&#125; + &#123;10,20,30,40,50&#125; = &#123;11,22,33,44,55&#125; ------ 2</span><br><span class="line">&#123;1,2,3,4,5&#125; + &#123;10,20,30,40,50&#125; = &#123;11,22,33,44,55&#125; ------ 0</span><br><span class="line">111</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2020/01/17/opencv_cuda_1st/" rel="next" title="CUDA + OpenCV 编程 1：体验OpenCV GpuMat类型">
+                  <i class="fa fa-chevron-left"></i> CUDA + OpenCV 编程 1：体验OpenCV GpuMat类型
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="zzeng"
+    src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">zzeng</p>
+  <div class="site-description" itemprop="description">Robert Z's Notes</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zzeng</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.0.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.4.1
+  </div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/utils.js?v=7.4.1"></script><script src="/js/motion.js?v=7.4.1"></script>
+<script src="/js/schemes/muse.js?v=7.4.1"></script>
+<script src="/js/next-boot.js?v=7.4.1"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex@0/dist/katex.min.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+  
+
+  
+
+</body>
+</html>
