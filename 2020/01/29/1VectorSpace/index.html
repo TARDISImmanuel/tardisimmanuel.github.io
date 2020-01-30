@@ -50,14 +50,14 @@
   };
 </script>
 
-  <meta name="description" content="C={a+bi:a,b∈R}C=\{a+bi:a,b \in R\}C={a+bi:a,b∈R} 复数算数性质：交换性、结合性、单位元、加法逆元、乘法逆元、分配性  向量空间 向量空间就是带有加法和标量乘法的集合VVV，满足如下性质：   交换性（commutativity） 对所有u,v∈Vu, v \in Vu,v∈V， 都有u+v=v+uu+v=v+uu+v=v+u   结合性（associ">
+  <meta name="description" content="开始重温线性代数。 C={a+bi:a,b∈R}C=\{a+bi:a,b \in R\}C={a+bi:a,b∈R} 复数算数性质：交换性、结合性、单位元、加法逆元、乘法逆元、分配性  向量空间 向量空间就是带有加法和标量乘法的集合VVV，满足如下性质：   交换性（commutativity） 对所有u,v∈Vu, v \in Vu,v∈V， 都有u+v=v+uu+v=v+uu+v=v+u">
 <meta property="og:type" content="article">
 <meta property="og:title" content="线性代数1 - 向量空间">
 <meta property="og:url" content="https:&#x2F;&#x2F;tardisimmanuel.github.io&#x2F;2020&#x2F;01&#x2F;29&#x2F;1VectorSpace&#x2F;index.html">
 <meta property="og:site_name" content="Robert Z&#39;s Notes">
-<meta property="og:description" content="C={a+bi:a,b∈R}C=\{a+bi:a,b \in R\}C={a+bi:a,b∈R} 复数算数性质：交换性、结合性、单位元、加法逆元、乘法逆元、分配性  向量空间 向量空间就是带有加法和标量乘法的集合VVV，满足如下性质：   交换性（commutativity） 对所有u,v∈Vu, v \in Vu,v∈V， 都有u+v=v+uu+v=v+uu+v=v+u   结合性（associ">
+<meta property="og:description" content="开始重温线性代数。 C={a+bi:a,b∈R}C=\{a+bi:a,b \in R\}C={a+bi:a,b∈R} 复数算数性质：交换性、结合性、单位元、加法逆元、乘法逆元、分配性  向量空间 向量空间就是带有加法和标量乘法的集合VVV，满足如下性质：   交换性（commutativity） 对所有u,v∈Vu, v \in Vu,v∈V， 都有u+v=v+uu+v=v+uu+v=v+u">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-01-30T07:17:05.846Z">
+<meta property="og:updated_time" content="2020-01-30T07:19:23.243Z">
 <meta name="twitter:card" content="summary">
   <link rel="canonical" href="https://tardisimmanuel.github.io/2020/01/29/1VectorSpace/">
 
@@ -199,7 +199,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2020-01-29 23:17:08 / Modified: 23:17:05" itemprop="dateCreated datePublished" datetime="2020-01-29T23:17:08-08:00">2020-01-29</time>
+              <time title="Created: 2020-01-29 23:17:08 / Modified: 23:19:23" itemprop="dateCreated datePublished" datetime="2020-01-29T23:17:08-08:00">2020-01-29</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -224,7 +224,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>C</mi><mo>=</mo><mo stretchy="false">{</mo><mi>a</mi><mo>+</mo><mi>b</mi><mi>i</mi><mo>:</mo><mi>a</mi><mo separator="true">,</mo><mi>b</mi><mo>∈</mo><mi>R</mi><mo stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">C=\{a+bi:a,b \in R\}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord mathdefault">a</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">b</span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">b</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mclose">}</span></span></span></span></p>
+        <p>开始重温线性代数。</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>C</mi><mo>=</mo><mo stretchy="false">{</mo><mi>a</mi><mo>+</mo><mi>b</mi><mi>i</mi><mo>:</mo><mi>a</mi><mo separator="true">,</mo><mi>b</mi><mo>∈</mo><mi>R</mi><mo stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">C=\{a+bi:a,b \in R\}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord mathdefault">a</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">b</span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">b</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mclose">}</span></span></span></span></p>
 <p>复数算数性质：交换性、结合性、单位元、加法逆元、乘法逆元、分配性</p>
 <h2 id="向量空间"><a class="markdownIt-Anchor" href="#向量空间"></a> 向量空间</h2>
 <p><strong>向量空间</strong>就是带有加法和标量乘法的集合<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>V</mi></mrow><annotation encoding="application/x-tex">V</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.22222em;">V</span></span></span></span>，满足如下性质：</p>
