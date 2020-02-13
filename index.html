@@ -197,10 +197,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-02-10 13:44:30 / Modified: 17:02:42" itemprop="dateCreated datePublished" datetime="2020-02-10T13:44:30-08:00">2020-02-10</time>
+              <time title="Created: 2020-02-10 13:44:30" itemprop="dateCreated datePublished" datetime="2020-02-10T13:44:30-08:00">2020-02-10</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-02-13 00:24:01" itemprop="dateModified" datetime="2020-02-13T00:24:01-08:00">2020-02-13</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -241,8 +247,159 @@
 <li><code>vertIndex</code>中每一个索引是对应于该顶点值的数组<code>pt</code>的下标。<code>pt</code>保存了具体定点数值，如坐标、颜色等</li>
 <li><code>glDrawElements()</code>的最后一个参数为<code>vertIndex</code>，由显示立方体的四边形表面的第一个参数<code>GL_QUADS</code>使用。第二个参数，索引数量。第三个参数，索引值的类型，因为此时所用的索引是小整数，所以是<code>GL_UNSIGNED_BYTE</code>类型，另外两种可用的索引类型是<code>GL_UNSIGNED_SHORT</code>和<code>GL_UNSIGNED_INT</code>。</li>
 </ol>
-<h2 id="opengl像素阵列函数"><a class="markdownIt-Anchor" href="#opengl像素阵列函数"></a> OpenGL像素阵列函数</h2>
+<h2 id="2-opengl像素阵列函数"><a class="markdownIt-Anchor" href="#2-opengl像素阵列函数"></a> 2. OpenGL像素阵列函数</h2>
 <p>？？？？？</p>
+<h2 id="3-opengl显示表"><a class="markdownIt-Anchor" href="#3-opengl显示表"></a> 3. OpenGL显示表</h2>
+<p><strong>显示表和直接调用函数的区别</strong>在于，其效率较高，避免了OpenGL内部许多其它的函数调用。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;GL/glut.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> TWO_PI = <span class="number">2</span> * <span class="number">3.1415926535</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Initial display-window size. */</span></span><br><span class="line">GLsizei winWidth = <span class="number">400</span>, winHeight = <span class="number">400</span>;</span><br><span class="line">GLuint regHex;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ScreenPt</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	GLint x, y;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	ScreenPt()</span><br><span class="line">	&#123;</span><br><span class="line">		x = y = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">setCoords</span><span class="params">(GLint xCoord, GLint yCoord)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		x = xCoord;</span><br><span class="line">		y = yCoord;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function">GLint <span class="title">getx</span><span class="params">()</span> <span class="keyword">const</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> x;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function">GLint <span class="title">gety</span><span class="params">()</span> <span class="keyword">const</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> y;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ScreenPt hexVertex, circCtr;</span><br><span class="line">	GLdouble theta;</span><br><span class="line">	GLint k;</span><br><span class="line"></span><br><span class="line">	circCtr.setCoords(winWidth / <span class="number">2</span>, winHeight / <span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">	glClearColor(<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">	regHex = glGenLists(<span class="number">1</span>);</span><br><span class="line">	glNewList(regHex, GL_COMPILE);</span><br><span class="line">	&#123;</span><br><span class="line">		glBegin(GL_POLYGON);</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span> (k = <span class="number">0</span>; k &lt; <span class="number">6</span>; k++)</span><br><span class="line">			&#123;</span><br><span class="line">				glColor3f((GLfloat)k / <span class="number">6.0</span>, <span class="number">1</span> - (GLfloat)k / <span class="number">6.0</span>, <span class="number">0.0</span>);</span><br><span class="line">				theta = TWO_PI * k / <span class="number">6.0</span>;</span><br><span class="line">				hexVertex.setCoords(circCtr.getx() + <span class="number">150</span> * <span class="built_in">cos</span>(theta), circCtr.gety() + <span class="number">150</span> * <span class="built_in">sin</span>(theta));</span><br><span class="line">				glVertex2i(hexVertex.getx(), hexVertex.gety());</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		glEnd();</span><br><span class="line">	&#125;</span><br><span class="line">	glEndList();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">regHexagon</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	glClear(GL_COLOR_BUFFER_BIT);</span><br><span class="line">	glCallList(regHex);</span><br><span class="line">	glFlush();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">winReshapeFcn</span><span class="params">(<span class="keyword">int</span> newWidth, <span class="keyword">int</span> newHeight)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	glMatrixMode(GL_PROJECTION);</span><br><span class="line">	glLoadIdentity();</span><br><span class="line">	gluOrtho2D(<span class="number">0</span>, (GLdouble)newWidth, <span class="number">0</span>, (GLdouble)newHeight);</span><br><span class="line"></span><br><span class="line">	glClear(GL_COLOR_BUFFER_BIT);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span>** argv)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	glutInit(&amp;argc, argv);</span><br><span class="line">	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);</span><br><span class="line">	glutInitWindowPosition(<span class="number">100</span>, <span class="number">100</span>);</span><br><span class="line">	glutInitWindowSize(winWidth, winHeight);</span><br><span class="line">	glutCreateWindow(<span class="string">"glList Example"</span>);</span><br><span class="line"></span><br><span class="line">	init();</span><br><span class="line">	glutDisplayFunc(regHexagon);</span><br><span class="line">	glutReshapeFunc(winReshapeFcn);</span><br><span class="line"></span><br><span class="line">	glutMainLoop();</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">CPU: Intel(R) Core(TM) i7-8750H CPU @ 2.20GHz</span><br><span class="line">	6 cores, 12 logical processors</span><br><span class="line">GPU: NVIDIA GeForce GTX 1050 Ti, CUDA 10.1</span><br><span class="line">OS: Windows 10.0.18362.0 SDK, Visual Studio 2019</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<p><img src="https://drive.google.com/uc?id=1pCWjj6gzfADAWE3vcU50d6fHHsiYX1tF" alt></p>
+<h2 id="4-opengl输出图元函数及相关子程序小结"><a class="markdownIt-Anchor" href="#4-opengl输出图元函数及相关子程序小结"></a> 4. OpenGL输出图元函数及相关子程序小结</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">函数</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>gluOrtho2d(GLdouble left, GLdouble right, GLdouble bottom, GLdouble top)</code></td>
+<td style="text-align:left">指定二维世界坐标系</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>glVertex*</code></td>
+<td style="text-align:left">选择一个坐标位置。该函数必须放在<code>glBegin</code>/<code>glEnd</code>之间</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>glBegin(GL_POINTS)</code></td>
+<td style="text-align:left">绘出一个或多个点，每个都在<code>glVertex</code>函数中指定。该位置串用<code>glEnd</code>语句来结束</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>glBegin(GL_LINES)</code></td>
+<td style="text-align:left">显示一组直线段，其端点坐标在<code>glVertex</code>函数中指定，该端点串最后由<code>glEnd</code>语句来结束</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>glBegin(GL_LINE_STRIP)</code></td>
+<td style="text-align:left">显示用与<code>GL_LINES</code>同样的结构指定的折线</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>glBegin(GL_LINE_LOOP)</code></td>
+<td style="text-align:left">显示用与<code>GL_LINES</code>同样的结构指定的封闭折线</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>glRect*</code></td>
+<td style="text-align:left">显示xy平面上的一个填充区</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>glBegin(GL_POLYGON)</code></td>
+<td style="text-align:left">显示一个填充多边形，其顶点在<code>glVertex</code>中给出且由<code>glEnd</code>语句结束</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>glBegin(GL_TRIANGLES)</code></td>
+<td style="text-align:left">显示一组填充三角形，其描述结构与<code>GL_POLYGON</code>相同</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>glBegin(GL_TRIANGLE_STRIP)</code></td>
+<td style="text-align:left">显示一个填充三角形带，其描述结构与<code>GL_POLYGON</code>相同</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>glBegin(GL_TRIANGLE_FAN)</code></td>
+<td style="text-align:left">显示一个扇形的填充三角形带，所有三角形都与第一顶点相连，其描述结构与<code>GL_POLYGON</code>X相同</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>glBegin(GL_QUADS)</code></td>
+<td style="text-align:left">显示一组填充四边形，其描述结构与<code>GL_POLYGON</code>相同</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>glBegin(GL_QUAD_STRIP)</code></td>
+<td style="text-align:left">显示一组填充四边形带，其描述结构与<code>GL_POLYGON相同</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>glEnableClientState(GL_VERTEX_ARRAY)</code></td>
+<td style="text-align:left">激活OpenGL的顶点数组设施</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>glVertexPointer(size, type, stride, array)</code></td>
+<td style="text-align:left">指定一坐标值数组</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>glDrawElements(prim, num, type, array)</code></td>
+<td style="text-align:left">从数组数据中显示一指定图元类型</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>glNewList(listID, listMode)</code></td>
+<td style="text-align:left">把一组命令定义为一个显示表，用<code>glEnd</code>语句结束</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>glGenLists(GLsizei range)</code></td>
+<td style="text-align:left">生成一个或多个显示表标识</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>glIsList</code></td>
+<td style="text-align:left">确定一个显示表标识是否被使用的询问函数</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>glCallList</code></td>
+<td style="text-align:left">执行一个显示表</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>glListBase</code></td>
+<td style="text-align:left">指定显示表表示数组的位移</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>glCallLists</code></td>
+<td style="text-align:left">执行多个显示表</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>glDeleteLists</code></td>
+<td style="text-align:left">删除指定的一串显示表</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>glRastorPos*</code></td>
+<td style="text-align:left">为帧缓存指定一个二维或三维当前位置。该位置作为位图和像素图图案的参考</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>glBitmap(w, h, x0, y0, Xshift, Yshift, pattern)</code></td>
+<td style="text-align:left">指定要映射到与当前位置对应的像素位置的位图图案</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>glDrawPixels(w, h, type, format, pattern)</code></td>
+<td style="text-align:left">指定要映射到与当前位置对应的像素位置的像素图图案</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>glDrawBuffer(GLenum buf)</code> / <code>glNamedFramebufferDrawBuffer( GLuint framebuffer, GLenum buf)</code></td>
+<td style="text-align:left">选择存储像素图的一个或多个缓存</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>glReadPixels(GLint x, GLint y, GLsizei width, GLsizei height, GLenum format, GLenum type, void* data)</code></td>
+<td style="text-align:left">将一块像素存入指定的数组</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>glCopyPixels(GLint x, GLint y, GLsizei width, GLsizei height, GLenum type)</code></td>
+<td style="text-align:left">将一块像素从一个缓存复制到另一个</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>glLogicOp(GLenum opcode)</code></td>
+<td style="text-align:left">在用常量GL_COLOR_LOGIC_OP激活后选择一种逻辑操作来组合两个像素数组</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>glutBitmapCharacter(font, char)</code></td>
+<td style="text-align:left">选择一种字体和一个位图字符来显示</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>glutStrokeCharacter(font, char)</code></td>
+<td style="text-align:left">选择一种字体和一个轮廓字符来显示</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>glutReshapeFunc(void(*func)(int width, int height))</code></td>
+<td style="text-align:left">指定显示窗口尺寸改变时的工作</td>
+</tr>
+</tbody>
+</table>
+<h2 id="5-示例程序"><a class="markdownIt-Anchor" href="#5-示例程序"></a> 5. 示例程序</h2>
 
       
     </div>
