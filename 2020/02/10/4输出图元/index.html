@@ -50,16 +50,18 @@
   };
 </script>
 
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.  Quic">
+  <meta name="description" content="1. 顶点数组 顶点数组（vertex array），用于减少处理坐标信息的函数调用数量 12345678910glEnableClientState(GL_VERTEX_ARRAY);glVertexPointer(3, GL_INT, 0, pt);GLubyte vertIndex [] = (6, 2, 3, 7,                       5, 1, 0, 4,">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="https:&#x2F;&#x2F;tardisimmanuel.github.io&#x2F;2019&#x2F;10&#x2F;17&#x2F;hello-world&#x2F;index.html">
+<meta property="og:title" content="计算机图形学2 - 输出图元">
+<meta property="og:url" content="https:&#x2F;&#x2F;tardisimmanuel.github.io&#x2F;2020&#x2F;02&#x2F;10&#x2F;4%E8%BE%93%E5%87%BA%E5%9B%BE%E5%85%83&#x2F;index.html">
 <meta property="og:site_name" content="Robert Z&#39;s Notes">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.  Quic">
+<meta property="og:description" content="1. 顶点数组 顶点数组（vertex array），用于减少处理坐标信息的函数调用数量 12345678910glEnableClientState(GL_VERTEX_ARRAY);glVertexPointer(3, GL_INT, 0, pt);GLubyte vertIndex [] = (6, 2, 3, 7,                       5, 1, 0, 4,">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-01-30T07:18:42.155Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;drive.google.com&#x2F;uc?id=1FHu_HMhk-tYC3t2452QImhohbe1_AdeZ">
+<meta property="og:updated_time" content="2020-02-11T01:02:42.174Z">
 <meta name="twitter:card" content="summary">
-  <link rel="canonical" href="https://tardisimmanuel.github.io/2019/10/17/hello-world/">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;drive.google.com&#x2F;uc?id=1FHu_HMhk-tYC3t2452QImhohbe1_AdeZ">
+  <link rel="canonical" href="https://tardisimmanuel.github.io/2020/02/10/4%E8%BE%93%E5%87%BA%E5%9B%BE%E5%85%83/">
 
 
 <script id="page-configurations">
@@ -73,7 +75,7 @@
   };
 </script>
 
-  <title>Hello World | Robert Z's Notes</title>
+  <title>计算机图形学2 - 输出图元 | Robert Z's Notes</title>
   
 
 
@@ -175,7 +177,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
-    <link itemprop="mainEntityOfPage" href="https://tardisimmanuel.github.io/2019/10/17/hello-world/">
+    <link itemprop="mainEntityOfPage" href="https://tardisimmanuel.github.io/2020/02/10/4%E8%BE%93%E5%87%BA%E5%9B%BE%E5%85%83/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -188,7 +190,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Hello World
+          计算机图形学2 - 输出图元
         </h1>
 
         <div class="post-meta">
@@ -197,16 +199,21 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2019-10-17 23:17:08" itemprop="dateCreated datePublished" datetime="2019-10-17T23:17:08-07:00">2019-10-17</time>
+              <time title="Created: 2020-02-10 13:44:30 / Modified: 17:02:42" itemprop="dateCreated datePublished" datetime="2020-02-10T13:44:30-08:00">2020-02-10</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-01-29 23:18:42" itemprop="dateModified" datetime="2020-01-29T23:18:42-08:00">2020-01-29</time>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
               </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机图形学</span>
+                  </a>
+                </span>
+            </span>
 
           
 
@@ -219,20 +226,25 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="quick-start"><a class="markdownIt-Anchor" href="#quick-start"></a> Quick Start</h2>
-<h3 id="create-a-new-post"><a class="markdownIt-Anchor" href="#create-a-new-post"></a> Create a new post</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="run-server"><a class="markdownIt-Anchor" href="#run-server"></a> Run server</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="generate-static-files"><a class="markdownIt-Anchor" href="#generate-static-files"></a> Generate static files</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="deploy-to-remote-sites"><a class="markdownIt-Anchor" href="#deploy-to-remote-sites"></a> Deploy to remote sites</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <h2 id="1-顶点数组"><a class="markdownIt-Anchor" href="#1-顶点数组"></a> 1. 顶点数组</h2>
+<p><strong>顶点数组</strong>（vertex array），用于减少处理坐标信息的函数调用数量</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">glEnableClientState(GL_VERTEX_ARRAY);</span><br><span class="line">glVertexPointer(<span class="number">3</span>, GL_INT, <span class="number">0</span>, pt);</span><br><span class="line">GLubyte vertIndex [] = (<span class="number">6</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">7</span>,</span><br><span class="line">                       <span class="number">5</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">4</span>,</span><br><span class="line">                       <span class="number">7</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">5</span>,</span><br><span class="line">                       <span class="number">4</span>, <span class="number">0</span>, <span class="number">2</span>, <span class="number">6</span>,</span><br><span class="line">                       <span class="number">2</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">3</span>,</span><br><span class="line">                       <span class="number">7</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">6</span>);</span><br><span class="line"></span><br><span class="line">glDrawElements(GL_QUADS, <span class="number">24</span>, GL_UNSIGNED_BYTE, vertIndex);</span><br></pre></td></tr></table></figure>
+<p><img src="https://drive.google.com/uc?id=1FHu_HMhk-tYC3t2452QImhohbe1_AdeZ" alt></p>
+<ol>
+<li>引用函数<code>glEnableClientState(GL_VERTEX_ARRAY)</code>，激活Client/Server系统中Client的能力（此时是顶点数组）。因为客户端保留图形的数据，顶点数组必须在那里。服务器发出命令并显示图形（单个计算机既是客户端又是服务端）。使用下列命令使其无效<code>glDisableClientState(GL_VERTEX_ARRAY)</code>。</li>
+<li><code>glVertexPointer()</code>
+<ul>
+<li>第一个参数在此例中为3，指出每一个顶点描述中的元素数目</li>
+<li>第二个参数为OpenGL符号常量</li>
+<li>第三个参数给出连续顶点之间的字节位移。使用这一参数的目的是允许多种类型的数据（如坐标和颜色）捆绑在同一个数组内</li>
+<li>第四个参数指向包含坐标值的顶点数组</li>
+</ul>
+</li>
+<li><code>vertIndex</code>中每一个索引是对应于该顶点值的数组<code>pt</code>的下标。<code>pt</code>保存了具体定点数值，如坐标、颜色等</li>
+<li><code>glDrawElements()</code>的最后一个参数为<code>vertIndex</code>，由显示立方体的四边形表面的第一个参数<code>GL_QUADS</code>使用。第二个参数，索引数量。第三个参数，索引值的类型，因为此时所用的索引是小整数，所以是<code>GL_UNSIGNED_BYTE</code>类型，另外两种可用的索引类型是<code>GL_UNSIGNED_SHORT</code>和<code>GL_UNSIGNED_INT</code>。</li>
+</ol>
+<h2 id="opengl像素阵列函数"><a class="markdownIt-Anchor" href="#opengl像素阵列函数"></a> OpenGL像素阵列函数</h2>
+<p>？？？？？</p>
 
     </div>
 
@@ -246,14 +258,14 @@
 
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
+                <a href="/2020/02/02/2Eigen/" rel="next" title="线性代数2 - 线性映射">
+                  <i class="fa fa-chevron-left"></i> 线性代数2 - 线性映射
+                </a>
             </div>
 
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-                <a href="/2019/10/19/test-post-md/" rel="prev" title="test_post">
-                  test_post <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
       </footer>
@@ -292,7 +304,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#quick-start"><span class="nav-number">1.</span> <span class="nav-text"> Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text"> Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#run-server"><span class="nav-number">1.2.</span> <span class="nav-text"> Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text"> Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text"> Deploy to remote sites</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-顶点数组"><span class="nav-number">1.</span> <span class="nav-text"> 1. 顶点数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#opengl像素阵列函数"><span class="nav-number">2.</span> <span class="nav-text"> OpenGL像素阵列函数</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
