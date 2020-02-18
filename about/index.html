@@ -50,14 +50,14 @@
   };
 </script>
 
-  <meta name="description" content="This is my home page Nothing here. See the posts">
+  <meta name="description" content="This is my about page Nothing here. See the posts">
 <meta property="og:type" content="website">
 <meta property="og:title" content="about">
 <meta property="og:url" content="https:&#x2F;&#x2F;tardisimmanuel.github.io&#x2F;about&#x2F;index.html">
 <meta property="og:site_name" content="Robert Z&#39;s Notes">
-<meta property="og:description" content="This is my home page Nothing here. See the posts">
+<meta property="og:description" content="This is my about page Nothing here. See the posts">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-02-14T22:59:50.836Z">
+<meta property="og:updated_time" content="2020-02-18T21:31:29.627Z">
 <meta name="twitter:card" content="summary">
   <link rel="canonical" href="https://tardisimmanuel.github.io/about/">
 
@@ -204,7 +204,7 @@
       
       
       <div class="post-body">
-          <h1 id="this-is-my-home-page"><a class="markdownIt-Anchor" href="#this-is-my-home-page"></a> This is my home page</h1>
+          <h1 id="this-is-my-about-page"><a class="markdownIt-Anchor" href="#this-is-my-about-page"></a> This is my about page</h1>
 <p>Nothing here. See the posts</p>
 
       </div>
@@ -246,7 +246,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#this-is-my-home-page"><span class="nav-number">1.</span> <span class="nav-text"> This is my home page</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#this-is-my-about-page"><span class="nav-number">1.</span> <span class="nav-text"> This is my about page</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -357,8 +357,53 @@
 
   
       
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex@0/dist/katex.min.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<script type="text/x-mathjax-config">
 
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+    
 
   
 
