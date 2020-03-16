@@ -40,7 +40,7 @@
     },
     localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
     path: '',
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
       copy_button: 'Copy',
       copy_success: 'Copied',
@@ -50,12 +50,12 @@
   };
 </script>
 
-  <meta name="description" content="1. 坐标表示   建模坐标系（modeling coordinate）、局部坐标系（local coordinate）、主坐标系（master coordinate）   世界坐标系（world coordinate）   观察坐标系（viewing coordinate）   规范化坐标系（normalized coordinate）：左手坐标系   设备坐标系（device coordin">
+  <meta name="description" content="1. 坐标表示  建模坐标系（modeling coordinate）、局部坐标系（local coordinate）、主坐标系（master coordinate）   世界坐标系（world coordinate）   观察坐标系（viewing coordinate）   规范化坐标系（normalized coordinate）：左手坐标系   设备坐标系（device coordina">
 <meta property="og:type" content="article">
 <meta property="og:title" content="计算机图形学1 - 计算机图形软件">
 <meta property="og:url" content="https:&#x2F;&#x2F;tardisimmanuel.github.io&#x2F;2020&#x2F;02&#x2F;01&#x2F;3%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E8%BD%AF%E4%BB%B6&#x2F;index.html">
 <meta property="og:site_name" content="Robert Z&#39;s Notes">
-<meta property="og:description" content="1. 坐标表示   建模坐标系（modeling coordinate）、局部坐标系（local coordinate）、主坐标系（master coordinate）   世界坐标系（world coordinate）   观察坐标系（viewing coordinate）   规范化坐标系（normalized coordinate）：左手坐标系   设备坐标系（device coordin">
+<meta property="og:description" content="1. 坐标表示  建模坐标系（modeling coordinate）、局部坐标系（local coordinate）、主坐标系（master coordinate）   世界坐标系（world coordinate）   观察坐标系（viewing coordinate）   规范化坐标系（normalized coordinate）：左手坐标系   设备坐标系（device coordina">
 <meta property="og:locale" content="en">
 <meta property="og:updated_time" content="2020-02-01T08:36:38.927Z">
 <meta name="twitter:card" content="summary">
@@ -109,7 +109,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -234,8 +234,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="1-坐标表示"><a class="markdownIt-Anchor" href="#1-坐标表示"></a> 1. 坐标表示</h2>
-<ul>
+        <h2 id="1-坐标表示"><a class="markdownIt-Anchor" href="#1-坐标表示"></a> 1. 坐标表示</h2><ul>
 <li>
 <p>建模坐标系（modeling coordinate）、局部坐标系（local coordinate）、主坐标系（master coordinate）</p>
 </li>
@@ -251,7 +250,8 @@
 <li>
 <p>设备坐标系（device coordinate）、屏幕坐标系（screen coordinate）</p>
 </li>
-</ul>
+</ul><a id="more"></a>
+
 <p>观察流水线（viewing pipeline）：将世界坐标经过变换到一个或多个输出设备参照系</p>
 <h2 id="2-图形功能"><a class="markdownIt-Anchor" href="#2-图形功能"></a> 2. 图形功能</h2>
 <p><strong>图形输出图元</strong>（graphics output primitive）：图形的基本构造快，包括字符串和几何成分，如点、直线、曲线、填充区域（通常为多边形）以及由彩色阵列定义的形状</p>
@@ -491,9 +491,7 @@
 
   
   <script src="/lib/anime.min.js?v=3.1.0"></script>
-  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-<script src="/js/utils.js?v=7.4.1"></script><script src="/js/motion.js?v=7.4.1"></script>
+<script src="/js/utils.js?v=7.4.1"></script>
 <script src="/js/schemes/pisces.js?v=7.4.1"></script>
 <script src="/js/next-boot.js?v=7.4.1"></script>
 

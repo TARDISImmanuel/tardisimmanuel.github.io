@@ -40,7 +40,7 @@
     },
     localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
     path: '',
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
       copy_button: 'Copy',
       copy_success: 'Copied',
@@ -50,12 +50,12 @@
   };
 </script>
 
-  <meta name="description" content="总体逻辑非常简单：   首先安装Visual Studio，然后安装CUDA，其次是cmake。   安装完cmake以后，下载同版本的OpenCV source和OpenCV contrib source。   管理员模式打开cmake gui。   将OpenCV source的路径填入Where is the source code，新建build文件夹，填入Where to build t">
+  <meta name="description" content="总体逻辑非常简单：  首先安装Visual Studio，然后安装CUDA，其次是cmake。   安装完cmake以后，下载同版本的OpenCV source和OpenCV contrib source。   管理员模式打开cmake gui。   将OpenCV source的路径填入Where is the source code，新建build文件夹，填入Where to build th">
 <meta property="og:type" content="article">
 <meta property="og:title" content="OpenCV 3.4.7 + CUDA 10.1 + Visual Studio 2017环境配置">
 <meta property="og:url" content="https:&#x2F;&#x2F;tardisimmanuel.github.io&#x2F;2020&#x2F;01&#x2F;15&#x2F;opencv_cuda&#x2F;index.html">
 <meta property="og:site_name" content="Robert Z&#39;s Notes">
-<meta property="og:description" content="总体逻辑非常简单：   首先安装Visual Studio，然后安装CUDA，其次是cmake。   安装完cmake以后，下载同版本的OpenCV source和OpenCV contrib source。   管理员模式打开cmake gui。   将OpenCV source的路径填入Where is the source code，新建build文件夹，填入Where to build t">
+<meta property="og:description" content="总体逻辑非常简单：  首先安装Visual Studio，然后安装CUDA，其次是cmake。   安装完cmake以后，下载同版本的OpenCV source和OpenCV contrib source。   管理员模式打开cmake gui。   将OpenCV source的路径填入Where is the source code，新建build文件夹，填入Where to build th">
 <meta property="og:locale" content="en">
 <meta property="og:updated_time" content="2020-01-17T09:14:30.374Z">
 <meta name="twitter:card" content="summary">
@@ -109,7 +109,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -240,8 +240,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>总体逻辑非常简单：</p>
-<ol>
+        <p>总体逻辑非常简单：</p><ol>
 <li>
 <p>首先安装Visual Studio，然后安装CUDA，其次是cmake。</p>
 </li>
@@ -267,7 +266,6 @@
 <p>等待……</p>
 </li>
 </ol>
-
     </div>
 
     
@@ -408,9 +406,7 @@
 
   
   <script src="/lib/anime.min.js?v=3.1.0"></script>
-  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-<script src="/js/utils.js?v=7.4.1"></script><script src="/js/motion.js?v=7.4.1"></script>
+<script src="/js/utils.js?v=7.4.1"></script>
 <script src="/js/schemes/pisces.js?v=7.4.1"></script>
 <script src="/js/next-boot.js?v=7.4.1"></script>
 

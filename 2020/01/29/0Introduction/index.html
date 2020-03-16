@@ -40,7 +40,7 @@
     },
     localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
     path: '',
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
       copy_button: 'Copy',
       copy_success: 'Copied',
@@ -50,12 +50,12 @@
   };
 </script>
 
-  <meta name="description" content="前言 心一横，一狠心，开了这个坑。希望能走到结尾，自己有所收获。 由于前期基础不足所以加上Introduction这一部分。 下面进入正题。  Introduction  聚点  定义 任给ϵ&amp;gt;0\epsilon &amp;gt; 0ϵ&amp;gt;0，存在无穷多个znz_nzn​，满足 ∣zn−z∣&amp;lt;ϵ|z_n-z| &amp;lt; \epsilon ∣zn​−z∣&amp;lt;ϵ 则称zzz 为复数序列{">
+  <meta name="description" content="前言心一横，一狠心，开了这个坑。希望能走到结尾，自己有所收获。由于前期基础不足所以加上Introduction这一部分。下面进入正题。 Introduction 聚点 定义任给ϵ&amp;gt;0\epsilon &amp;gt; 0ϵ&amp;gt;0，存在无穷多个znz_nzn​，满足∣zn−z∣&amp;lt;ϵ|z_n-z| &amp;lt; \epsilon ∣zn​−z∣&amp;lt;ϵ">
 <meta property="og:type" content="article">
 <meta property="og:title" content="实分析0 - Introduction">
 <meta property="og:url" content="https:&#x2F;&#x2F;tardisimmanuel.github.io&#x2F;2020&#x2F;01&#x2F;29&#x2F;0Introduction&#x2F;index.html">
 <meta property="og:site_name" content="Robert Z&#39;s Notes">
-<meta property="og:description" content="前言 心一横，一狠心，开了这个坑。希望能走到结尾，自己有所收获。 由于前期基础不足所以加上Introduction这一部分。 下面进入正题。  Introduction  聚点  定义 任给ϵ&amp;gt;0\epsilon &amp;gt; 0ϵ&amp;gt;0，存在无穷多个znz_nzn​，满足 ∣zn−z∣&amp;lt;ϵ|z_n-z| &amp;lt; \epsilon ∣zn​−z∣&amp;lt;ϵ 则称zzz 为复数序列{">
+<meta property="og:description" content="前言心一横，一狠心，开了这个坑。希望能走到结尾，自己有所收获。由于前期基础不足所以加上Introduction这一部分。下面进入正题。 Introduction 聚点 定义任给ϵ&amp;gt;0\epsilon &amp;gt; 0ϵ&amp;gt;0，存在无穷多个znz_nzn​，满足∣zn−z∣&amp;lt;ϵ|z_n-z| &amp;lt; \epsilon ∣zn​−z∣&amp;lt;ϵ">
 <meta property="og:locale" content="en">
 <meta property="og:updated_time" content="2020-01-30T07:14:00.000Z">
 <meta name="twitter:card" content="summary">
@@ -109,7 +109,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -234,16 +234,16 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="前言"><a class="markdownIt-Anchor" href="#前言"></a> 前言</h1>
-<p>心一横，一狠心，开了这个坑。希望能走到结尾，自己有所收获。</p>
-<p>由于前期基础不足所以加上Introduction这一部分。</p>
-<p>下面进入正题。</p>
-<h1 id="introduction"><a class="markdownIt-Anchor" href="#introduction"></a> Introduction</h1>
-<h2 id="聚点"><a class="markdownIt-Anchor" href="#聚点"></a> 聚点</h2>
-<h3 id="定义"><a class="markdownIt-Anchor" href="#定义"></a> 定义</h3>
-<p>任给<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>ϵ</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\epsilon &gt; 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathdefault">ϵ</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>，存在无穷多个<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>z</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">z_n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.04398em;">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.04398em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，满足</p>
-<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">∣</mi><msub><mi>z</mi><mi>n</mi></msub><mo>−</mo><mi>z</mi><mi mathvariant="normal">∣</mi><mo>&lt;</mo><mi>ϵ</mi></mrow><annotation encoding="application/x-tex">|z_n-z| &lt; \epsilon
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.04398em;">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.04398em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.04398em;">z</span><span class="mord">∣</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">ϵ</span></span></span></span></span></p>
+        <h1 id="前言"><a class="markdownIt-Anchor" href="#前言"></a> 前言</h1><p>心一横，一狠心，开了这个坑。希望能走到结尾，自己有所收获。</p><p>由于前期基础不足所以加上Introduction这一部分。</p><p>下面进入正题。</p><h1 id="introduction"><a class="markdownIt-Anchor" href="#introduction"></a> Introduction</h1><h2 id="聚点"><a class="markdownIt-Anchor" href="#聚点"></a> 聚点</h2><h3 id="定义"><a class="markdownIt-Anchor" href="#定义"></a> 定义</h3><p>任给<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>ϵ</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\epsilon &gt; 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathdefault">ϵ</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>，存在无穷多个<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>z</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">z_n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.04398em;">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.04398em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，满足</p><p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">∣</mi><msub><mi>z</mi><mi>n</mi></msub><mo>−</mo><mi>z</mi><mi mathvariant="normal">∣</mi><mo>&lt;</mo><mi>ϵ</mi></mrow><annotation encoding="application/x-tex">|z_n-z| &lt; \epsilon
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.04398em;">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.04398em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.04398em;">z</span><span class="mord">∣</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">ϵ</span></span></span></span></span></p><a id="more"></a>
+
+
+
+
+
+
+
+
 <p>则称<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>z</mi></mrow><annotation encoding="application/x-tex">z</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.04398em;">z</span></span></span></span> 为<a href="https://baike.baidu.com/item/%E5%A4%8D%E6%95%B0/254365" target="_blank" rel="noopener">复数</a><a href="https://baike.baidu.com/item/%E5%BA%8F%E5%88%97/1302588" target="_blank" rel="noopener">序列</a><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo stretchy="false">{</mo><msub><mi>Z</mi><mi>n</mi></msub><mo stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">\{ Z_n \}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">Z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">}</span></span></span></span>的一个<strong>聚点</strong>。</p>
 <h3 id="聚点与极限"><a class="markdownIt-Anchor" href="#聚点与极限"></a> 聚点与极限</h3>
 <p>有的序列可以有多个聚点。例如，实数序列</p>
@@ -414,9 +414,7 @@
 
   
   <script src="/lib/anime.min.js?v=3.1.0"></script>
-  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-<script src="/js/utils.js?v=7.4.1"></script><script src="/js/motion.js?v=7.4.1"></script>
+<script src="/js/utils.js?v=7.4.1"></script>
 <script src="/js/schemes/pisces.js?v=7.4.1"></script>
 <script src="/js/next-boot.js?v=7.4.1"></script>
 

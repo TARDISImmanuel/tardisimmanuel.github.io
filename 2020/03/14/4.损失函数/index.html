@@ -40,7 +40,7 @@
     },
     localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
     path: '',
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
       copy_button: 'Copy',
       copy_success: 'Copied',
@@ -50,12 +50,12 @@
   };
 </script>
 
-  <meta name="description" content="损失函数的定义，特性，在训练过程所起的作用  定义 在深度学习中，损失函数是用来衡量一组参数的质量的函数，衡量的方式是比较网络输出和真实输出的差异  命名 loss function，distance，cost function  损失函数 L(θ)=distance(fθ(x),y)\mathcal{L} (\theta) = distance(f_\theta (x), y)L(θ)=dis">
+  <meta name="description" content="损失函数的定义，特性，在训练过程所起的作用 定义在深度学习中，损失函数是用来衡量一组参数的质量的函数，衡量的方式是比较网络输出和真实输出的差异 命名loss function，distance，cost function 损失函数L(θ)=distance(fθ(x),y)\mathcal{L} (\theta) = distance(f_\theta (x), y)L(θ)=distance(">
 <meta property="og:type" content="article">
 <meta property="og:title" content="损失函数">
 <meta property="og:url" content="https:&#x2F;&#x2F;tardisimmanuel.github.io&#x2F;2020&#x2F;03&#x2F;14&#x2F;4.%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0&#x2F;index.html">
 <meta property="og:site_name" content="Robert Z&#39;s Notes">
-<meta property="og:description" content="损失函数的定义，特性，在训练过程所起的作用  定义 在深度学习中，损失函数是用来衡量一组参数的质量的函数，衡量的方式是比较网络输出和真实输出的差异  命名 loss function，distance，cost function  损失函数 L(θ)=distance(fθ(x),y)\mathcal{L} (\theta) = distance(f_\theta (x), y)L(θ)=dis">
+<meta property="og:description" content="损失函数的定义，特性，在训练过程所起的作用 定义在深度学习中，损失函数是用来衡量一组参数的质量的函数，衡量的方式是比较网络输出和真实输出的差异 命名loss function，distance，cost function 损失函数L(θ)=distance(fθ(x),y)\mathcal{L} (\theta) = distance(f_\theta (x), y)L(θ)=distance(">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https:&#x2F;&#x2F;drive.google.com&#x2F;uc?id=17ZKR1XOTsdG8TUEvTiG2KNz4Fxt0ZHtt">
 <meta property="og:image" content="https:&#x2F;&#x2F;drive.google.com&#x2F;uc?id=1MICkoOSJGugXMIHBG3VIp2wKwgfIyez7">
@@ -112,7 +112,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -243,13 +243,13 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="损失函数的定义特性在训练过程所起的作用"><a class="markdownIt-Anchor" href="#损失函数的定义特性在训练过程所起的作用"></a> 损失函数的定义，特性，在训练过程所起的作用</h1>
-<h3 id="定义"><a class="markdownIt-Anchor" href="#定义"></a> 定义</h3>
-<p>在深度学习中，损失函数是用来衡量一组参数的质量的函数，衡量的方式是比较网络输出和真实输出的差异</p>
-<h3 id="命名"><a class="markdownIt-Anchor" href="#命名"></a> 命名</h3>
-<p>loss function，distance，cost function</p>
-<h3 id="损失函数"><a class="markdownIt-Anchor" href="#损失函数"></a> 损失函数</h3>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="script">L</mi><mo stretchy="false">(</mo><mi>θ</mi><mo stretchy="false">)</mo><mo>=</mo><mi>d</mi><mi>i</mi><mi>s</mi><mi>t</mi><mi>a</mi><mi>n</mi><mi>c</mi><mi>e</mi><mo stretchy="false">(</mo><msub><mi>f</mi><mi>θ</mi></msub><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo separator="true">,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathcal{L} (\theta) = distance(f_\theta (x), y)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathcal">L</span></span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.02778em;">θ</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault">i</span><span class="mord mathdefault">s</span><span class="mord mathdefault">t</span><span class="mord mathdefault">a</span><span class="mord mathdefault">n</span><span class="mord mathdefault">c</span><span class="mord mathdefault">e</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">θ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mclose">)</span></span></span></span></p>
+        <h1 id="损失函数的定义特性在训练过程所起的作用"><a class="markdownIt-Anchor" href="#损失函数的定义特性在训练过程所起的作用"></a> 损失函数的定义，特性，在训练过程所起的作用</h1><h3 id="定义"><a class="markdownIt-Anchor" href="#定义"></a> 定义</h3><p>在深度学习中，损失函数是用来衡量一组参数的质量的函数，衡量的方式是比较网络输出和真实输出的差异</p><h3 id="命名"><a class="markdownIt-Anchor" href="#命名"></a> 命名</h3><p>loss function，distance，cost function</p><h3 id="损失函数"><a class="markdownIt-Anchor" href="#损失函数"></a> 损失函数</h3><p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="script">L</mi><mo stretchy="false">(</mo><mi>θ</mi><mo stretchy="false">)</mo><mo>=</mo><mi>d</mi><mi>i</mi><mi>s</mi><mi>t</mi><mi>a</mi><mi>n</mi><mi>c</mi><mi>e</mi><mo stretchy="false">(</mo><msub><mi>f</mi><mi>θ</mi></msub><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo separator="true">,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathcal{L} (\theta) = distance(f_\theta (x), y)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathcal">L</span></span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.02778em;">θ</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault">i</span><span class="mord mathdefault">s</span><span class="mord mathdefault">t</span><span class="mord mathdefault">a</span><span class="mord mathdefault">n</span><span class="mord mathdefault">c</span><span class="mord mathdefault">e</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">θ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mclose">)</span></span></span></span></p><a id="more"></a>
+
+
+
+
+
+
 <p>损失函数不使用测试数据来衡量网络性能</p>
 <p>损失函数用来指导训练过程，使得网络的参数向损失降低的方向改变</p>
 <p>损失函数为了使得误差向后传递back propagation工作</p>
@@ -578,9 +578,7 @@ square loss <span class="katex"><span class="katex-mathml"><math><semantics><mro
 
   
   <script src="/lib/anime.min.js?v=3.1.0"></script>
-  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-<script src="/js/utils.js?v=7.4.1"></script><script src="/js/motion.js?v=7.4.1"></script>
+<script src="/js/utils.js?v=7.4.1"></script>
 <script src="/js/schemes/pisces.js?v=7.4.1"></script>
 <script src="/js/next-boot.js?v=7.4.1"></script>
 

@@ -40,7 +40,7 @@
     },
     localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
     path: '',
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
       copy_button: 'Copy',
       copy_success: 'Copied',
@@ -50,12 +50,12 @@
   };
 </script>
 
-  <meta name="description" content="梯度消亡 神经网络靠输入端的网络层的系数逐渐不再随着训练而变化，或者变化非常缓慢。随着网络层数增加，这个现象越发明显  产生前提：  使用基于梯度的训练方法 使用的激活函数具有输出值范围大大小于输入值的范围，例如logistic，tanh  梯度下降法依靠理解系数的微小变化对输出的影响来学习网络的系数的值 如果一个系数的微小变化对网络的输出没有影响或影响很小，那么就无法知晓如何优化这个系数，或者">
+  <meta name="description" content="梯度消亡神经网络靠输入端的网络层的系数逐渐不再随着训练而变化，或者变化非常缓慢。随着网络层数增加，这个现象越发明显 产生前提： 使用基于梯度的训练方法 使用的激活函数具有输出值范围大大小于输入值的范围，例如logistic，tanh 梯度下降法依靠理解系数的微小变化对输出的影响来学习网络的系数的值如果一个系数的微小变化对网络的输出没有影响或影响很小，那么就无法知晓如何优化这个系数，或者优化特别慢">
 <meta property="og:type" content="article">
 <meta property="og:title" content="深度神经网络">
 <meta property="og:url" content="https:&#x2F;&#x2F;tardisimmanuel.github.io&#x2F;2020&#x2F;03&#x2F;15&#x2F;5.%E6%B7%B1%E5%BA%A6%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C&#x2F;index.html">
 <meta property="og:site_name" content="Robert Z&#39;s Notes">
-<meta property="og:description" content="梯度消亡 神经网络靠输入端的网络层的系数逐渐不再随着训练而变化，或者变化非常缓慢。随着网络层数增加，这个现象越发明显  产生前提：  使用基于梯度的训练方法 使用的激活函数具有输出值范围大大小于输入值的范围，例如logistic，tanh  梯度下降法依靠理解系数的微小变化对输出的影响来学习网络的系数的值 如果一个系数的微小变化对网络的输出没有影响或影响很小，那么就无法知晓如何优化这个系数，或者">
+<meta property="og:description" content="梯度消亡神经网络靠输入端的网络层的系数逐渐不再随着训练而变化，或者变化非常缓慢。随着网络层数增加，这个现象越发明显 产生前提： 使用基于梯度的训练方法 使用的激活函数具有输出值范围大大小于输入值的范围，例如logistic，tanh 梯度下降法依靠理解系数的微小变化对输出的影响来学习网络的系数的值如果一个系数的微小变化对网络的输出没有影响或影响很小，那么就无法知晓如何优化这个系数，或者优化特别慢">
 <meta property="og:locale" content="en">
 <meta property="og:updated_time" content="2020-03-16T03:19:54.966Z">
 <meta name="twitter:card" content="summary">
@@ -109,7 +109,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -234,15 +234,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="梯度消亡"><a class="markdownIt-Anchor" href="#梯度消亡"></a> 梯度消亡</h1>
-<p>神经网络靠输入端的网络层的系数逐渐不再随着训练而变化，或者变化非常缓慢。随着网络层数增加，这个现象越发明显</p>
-<h2 id="产生前提"><a class="markdownIt-Anchor" href="#产生前提"></a> 产生前提：</h2>
-<ol>
+        <h1 id="梯度消亡"><a class="markdownIt-Anchor" href="#梯度消亡"></a> 梯度消亡</h1><p>神经网络靠输入端的网络层的系数逐渐不再随着训练而变化，或者变化非常缓慢。随着网络层数增加，这个现象越发明显</p><h2 id="产生前提"><a class="markdownIt-Anchor" href="#产生前提"></a> 产生前提：</h2><ol>
 <li>使用基于梯度的训练方法</li>
 <li>使用的激活函数具有输出值范围大大小于输入值的范围，例如logistic，tanh</li>
-</ol>
-<p>梯度下降法依靠理解系数的微小变化对输出的影响来学习网络的系数的值</p>
-<p>如果一个系数的微小变化对网络的输出没有影响或影响很小，那么就无法知晓如何优化这个系数，或者优化特别慢。造成训练困难</p>
+</ol><p>梯度下降法依靠理解系数的微小变化对输出的影响来学习网络的系数的值</p><p>如果一个系数的微小变化对网络的输出没有影响或影响很小，那么就无法知晓如何优化这个系数，或者优化特别慢。造成训练困难</p><a id="more"></a>
+
+
+
+
+
 <h2 id="解决方案"><a class="markdownIt-Anchor" href="#解决方案"></a> 解决方案：</h2>
 <ol>
 <li>
@@ -460,9 +460,7 @@
 
   
   <script src="/lib/anime.min.js?v=3.1.0"></script>
-  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-<script src="/js/utils.js?v=7.4.1"></script><script src="/js/motion.js?v=7.4.1"></script>
+<script src="/js/utils.js?v=7.4.1"></script>
 <script src="/js/schemes/pisces.js?v=7.4.1"></script>
 <script src="/js/next-boot.js?v=7.4.1"></script>
 

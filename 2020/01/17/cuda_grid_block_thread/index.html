@@ -40,7 +40,7 @@
     },
     localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
     path: '',
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
       copy_button: 'Copy',
       copy_success: 'Copied',
@@ -50,12 +50,12 @@
   };
 </script>
 
-  <meta name="description" content="Kernel函数的配置参数 配置参数格式： 1Kernel&amp;lt;&amp;lt;&amp;lt;dimension_grid, dimension_block, shared_memory, cuda_stream&amp;gt;&amp;gt;&amp;gt;()  dimension_grid 网格 定义Grid的大小，即一个Grid有多少block。 类型为dim3，定义方式dim3 g(g.x, g.y, 1)，表示Grid">
+  <meta name="description" content="Kernel函数的配置参数配置参数格式：1Kernel&amp;lt;&amp;lt;&amp;lt;dimension_grid, dimension_block, shared_memory, cuda_stream&amp;gt;&amp;gt;&amp;gt;() dimension_grid 网格定义Grid的大小，即一个Grid有多少block。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CUDA中grid，block和thread的分配">
 <meta property="og:url" content="https:&#x2F;&#x2F;tardisimmanuel.github.io&#x2F;2020&#x2F;01&#x2F;17&#x2F;cuda_grid_block_thread&#x2F;index.html">
 <meta property="og:site_name" content="Robert Z&#39;s Notes">
-<meta property="og:description" content="Kernel函数的配置参数 配置参数格式： 1Kernel&amp;lt;&amp;lt;&amp;lt;dimension_grid, dimension_block, shared_memory, cuda_stream&amp;gt;&amp;gt;&amp;gt;()  dimension_grid 网格 定义Grid的大小，即一个Grid有多少block。 类型为dim3，定义方式dim3 g(g.x, g.y, 1)，表示Grid">
+<meta property="og:description" content="Kernel函数的配置参数配置参数格式：1Kernel&amp;lt;&amp;lt;&amp;lt;dimension_grid, dimension_block, shared_memory, cuda_stream&amp;gt;&amp;gt;&amp;gt;() dimension_grid 网格定义Grid的大小，即一个Grid有多少block。">
 <meta property="og:locale" content="en">
 <meta property="og:updated_time" content="2020-01-17T09:17:13.959Z">
 <meta name="twitter:card" content="summary">
@@ -109,7 +109,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -234,11 +234,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="kernel函数的配置参数"><a class="markdownIt-Anchor" href="#kernel函数的配置参数"></a> Kernel函数的配置参数</h2>
-<p>配置参数格式：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Kernel&lt;&lt;&lt;dimension_grid, dimension_block, shared_memory, cuda_stream&gt;&gt;&gt;()</span><br></pre></td></tr></table></figure>
-<h4 id="dimension_grid-网格"><a class="markdownIt-Anchor" href="#dimension_grid-网格"></a> dimension_grid 网格</h4>
-<p>定义Grid的大小，即一个Grid有多少block。</p>
+        <h2 id="kernel函数的配置参数"><a class="markdownIt-Anchor" href="#kernel函数的配置参数"></a> Kernel函数的配置参数</h2><p>配置参数格式：</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Kernel&lt;&lt;&lt;dimension_grid, dimension_block, shared_memory, cuda_stream&gt;&gt;&gt;()</span><br></pre></td></tr></table></figure><h4 id="dimension_grid-网格"><a class="markdownIt-Anchor" href="#dimension_grid-网格"></a> dimension_grid 网格</h4><p>定义Grid的大小，即一个Grid有多少block。</p><a id="more"></a>
+
+
+
+
 <p>类型为dim3，定义方式dim3 g(g.x, g.y, 1)，表示Grid中每行有g.x个block，每列g.y个block，第三维恒为1。Grid为二维，且一个Kernel只能有一个Grid。</p>
 <p>max(g.x) = max(g.y) = 65535</p>
 <h4 id="dimension_block-线程块"><a class="markdownIt-Anchor" href="#dimension_block-线程块"></a> dimension_block 线程块</h4>
@@ -401,9 +401,7 @@
 
   
   <script src="/lib/anime.min.js?v=3.1.0"></script>
-  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-<script src="/js/utils.js?v=7.4.1"></script><script src="/js/motion.js?v=7.4.1"></script>
+<script src="/js/utils.js?v=7.4.1"></script>
 <script src="/js/schemes/pisces.js?v=7.4.1"></script>
 <script src="/js/next-boot.js?v=7.4.1"></script>
 

@@ -40,7 +40,7 @@
     },
     localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
     path: '',
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
       copy_button: 'Copy',
       copy_success: 'Copied',
@@ -50,12 +50,12 @@
   };
 </script>
 
-  <meta name="description" content="1. 顶点数组 顶点数组（vertex array），用于减少处理坐标信息的函数调用数量 12345678910glEnableClientState(GL_VERTEX_ARRAY);glVertexPointer(3, GL_INT, 0, pt);GLubyte vertIndex [] = (6, 2, 3, 7,                       5, 1, 0, 4,">
+  <meta name="description" content="1. 顶点数组顶点数组（vertex array），用于减少处理坐标信息的函数调用数量12345678910glEnableClientState(GL_VERTEX_ARRAY);glVertexPointer(3, GL_INT, 0, pt);GLubyte vertIndex [] = (6, 2, 3, 7,                       5, 1, 0, 4,">
 <meta property="og:type" content="article">
 <meta property="og:title" content="计算机图形学2 - 输出图元">
 <meta property="og:url" content="https:&#x2F;&#x2F;tardisimmanuel.github.io&#x2F;2020&#x2F;02&#x2F;10&#x2F;4%E8%BE%93%E5%87%BA%E5%9B%BE%E5%85%83&#x2F;index.html">
 <meta property="og:site_name" content="Robert Z&#39;s Notes">
-<meta property="og:description" content="1. 顶点数组 顶点数组（vertex array），用于减少处理坐标信息的函数调用数量 12345678910glEnableClientState(GL_VERTEX_ARRAY);glVertexPointer(3, GL_INT, 0, pt);GLubyte vertIndex [] = (6, 2, 3, 7,                       5, 1, 0, 4,">
+<meta property="og:description" content="1. 顶点数组顶点数组（vertex array），用于减少处理坐标信息的函数调用数量12345678910glEnableClientState(GL_VERTEX_ARRAY);glVertexPointer(3, GL_INT, 0, pt);GLubyte vertIndex [] = (6, 2, 3, 7,                       5, 1, 0, 4,">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https:&#x2F;&#x2F;drive.google.com&#x2F;uc?id=1FHu_HMhk-tYC3t2452QImhohbe1_AdeZ">
 <meta property="og:image" content="https:&#x2F;&#x2F;drive.google.com&#x2F;uc?id=1pCWjj6gzfADAWE3vcU50d6fHHsiYX1tF">
@@ -112,7 +112,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -243,9 +243,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="1-顶点数组"><a class="markdownIt-Anchor" href="#1-顶点数组"></a> 1. 顶点数组</h2>
-<p><strong>顶点数组</strong>（vertex array），用于减少处理坐标信息的函数调用数量</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">glEnableClientState(GL_VERTEX_ARRAY);</span><br><span class="line">glVertexPointer(<span class="number">3</span>, GL_INT, <span class="number">0</span>, pt);</span><br><span class="line">GLubyte vertIndex [] = (<span class="number">6</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">7</span>,</span><br><span class="line">                       <span class="number">5</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">4</span>,</span><br><span class="line">                       <span class="number">7</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">5</span>,</span><br><span class="line">                       <span class="number">4</span>, <span class="number">0</span>, <span class="number">2</span>, <span class="number">6</span>,</span><br><span class="line">                       <span class="number">2</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">3</span>,</span><br><span class="line">                       <span class="number">7</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">6</span>);</span><br><span class="line"></span><br><span class="line">glDrawElements(GL_QUADS, <span class="number">24</span>, GL_UNSIGNED_BYTE, vertIndex);</span><br></pre></td></tr></table></figure>
+        <h2 id="1-顶点数组"><a class="markdownIt-Anchor" href="#1-顶点数组"></a> 1. 顶点数组</h2><p><strong>顶点数组</strong>（vertex array），用于减少处理坐标信息的函数调用数量</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">glEnableClientState(GL_VERTEX_ARRAY);</span><br><span class="line">glVertexPointer(<span class="number">3</span>, GL_INT, <span class="number">0</span>, pt);</span><br><span class="line">GLubyte vertIndex [] = (<span class="number">6</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">7</span>,</span><br><span class="line">                       <span class="number">5</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">4</span>,</span><br><span class="line">                       <span class="number">7</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">5</span>,</span><br><span class="line">                       <span class="number">4</span>, <span class="number">0</span>, <span class="number">2</span>, <span class="number">6</span>,</span><br><span class="line">                       <span class="number">2</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">3</span>,</span><br><span class="line">                       <span class="number">7</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">6</span>);</span><br><span class="line"></span><br><span class="line">glDrawElements(GL_QUADS, <span class="number">24</span>, GL_UNSIGNED_BYTE, vertIndex);</span><br></pre></td></tr></table></figure><a id="more"></a>
+
+
 <p><img src="https://drive.google.com/uc?id=1FHu_HMhk-tYC3t2452QImhohbe1_AdeZ" alt></p>
 <ol>
 <li>引用函数<code>glEnableClientState(GL_VERTEX_ARRAY)</code>，激活Client/Server系统中Client的能力（此时是顶点数组）。因为客户端保留图形的数据，顶点数组必须在那里。服务器发出命令并显示图形（单个计算机既是客户端又是服务端）。使用下列命令使其无效<code>glDisableClientState(GL_VERTEX_ARRAY)</code>。</li>
@@ -556,9 +556,7 @@
 
   
   <script src="/lib/anime.min.js?v=3.1.0"></script>
-  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-<script src="/js/utils.js?v=7.4.1"></script><script src="/js/motion.js?v=7.4.1"></script>
+<script src="/js/utils.js?v=7.4.1"></script>
 <script src="/js/schemes/pisces.js?v=7.4.1"></script>
 <script src="/js/next-boot.js?v=7.4.1"></script>
 
